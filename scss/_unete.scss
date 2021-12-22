@@ -1,0 +1,177 @@
+// =========================
+/* UNETE - SECCIÓN 1 */
+// =========================
+
+// Estilos para imagen de la portada
+.section-one-unete {
+    height: 100vh;
+    background: $color8,
+        url(../imagenes/unete.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+// Estilos del contenedor y texto de la portada
+.container-unete {
+    padding-bottom: 0;
+    padding-top: 0;
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.txt-unete {
+    font-size: 40px;
+    color: $color5;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.05em;
+    position: relative;
+    padding-bottom: 30px;
+
+    @media (min-width: $minwqmed) {
+        font-size: 60px; // Cambio de tamaño de fuente de acuerdo al width
+    }
+
+    @media (min-width: $minwqlarge) {
+        font-size: 80px; // Cambio de tamaño de fuente de acuerdo al width
+    }
+}
+
+.txt-unete::after {
+    content: "";
+    width: 100px;
+    height: 5px;
+    background: $color13;
+    left: 0px;
+    right: 0px;
+    bottom: 0;
+    position: absolute;
+    border-radius: 50px;
+    margin: auto;
+}
+
+.txt-talentos {
+    font-size: 25px;
+    color: $color5;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.05em;
+
+    @media (min-width: $minwqmed) {
+        font-size: 30px; // Cambio de tamaño de fuente de acuerdo al width
+    }
+
+    @media (min-width: $minwqlarge) {
+        font-size: 40px; // Cambio de tamaño de fuente de acuerdo al width
+    }
+}
+
+.txt-talentos2 {
+    font-size: 40px;
+    color: $color13;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.05em;
+    padding-bottom: 30px;
+
+    @media (min-width: $minwqmed) {
+        font-size: 50px;
+    }
+
+    @media (min-width: $minwqlarge) {
+        font-size: 60px;
+    }
+
+}
+
+.txt-talentos3 {
+    font-size: 18px;
+    color: $color5;
+    font-weight: 200;
+    text-align: center;
+    line-height: 1.05em;
+    padding-bottom: 30px;
+    padding-top: 60px;
+}
+
+// =========================
+// Flecha animada para postularse
+// =========================
+
+$base: 0.6rem;
+
+.container-flecha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 30px;
+
+}
+
+.chevron {
+    position: absolute;
+    width: $base * 3.5;
+    height: $base * 0.8;
+    opacity: 0;
+    transform: scale(0.3);
+    animation: move-chevron 3s ease-out infinite;
+}
+
+.chevron:first-child {
+    animation: move-chevron 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+    animation: move-chevron 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: $color5;
+}
+
+.chevron:before {
+    left: 0;
+    transform: skewY(30deg);
+}
+
+.chevron:after {
+    right: 0;
+    width: 50%;
+    transform: skewY(-30deg);
+}
+
+@keyframes move-chevron {
+    25% {
+        opacity: 1;
+    }
+
+    33.3% {
+        opacity: 1;
+        transform: translateY($base * 3.8);
+    }
+
+    66.6% {
+        opacity: 1;
+        transform: translateY($base * 5.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY($base * 8) scale(0.5);
+    }
+}
+
+
+//Padding inferior y superior para la sección del formulario para aplicar
+.section-two-unete {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}

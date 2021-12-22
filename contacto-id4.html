@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="contacto, cotización, reparación, plomería, electricidad, fontanero, albañil, impermeabilización">
+    <meta name="author" content="Ulises Moctezuma">
+    <meta name="title" content="yoloarreglo | Queremos ayudarte a tener el hogar perfecto, contáctanos.">
+    <meta name="description"
+        content="Cotiza con nostros los mejores servicios de reparación y mantenimiento residencial. Contamos un equipo de profesionales listos para arreglar cualquier cosa de tu hogar. Reparación y mantenimiento residencial a solo un clic.">
+    <title>yoloarreglo | Queremos ayudarte a tener el hogar perfecto, contáctanos.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="robots" content="index, follow">
+    <meta name="robots" content="all">
+    <meta name="lenguage" content="Spanish">
+    <meta name="distribution" content="Global">
+    <meta name="city" content="Cancún">
+    <meta name="city" content="Tulum">
+    <meta name="city" content="Playa del Carmen">
+    <meta name="city" content="Isla Mujeres">
+    <meta name="city" content="Mérida">
+    <meta name="country" content="México">
+    <meta name="doc-type" content="Web Page">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="topNav container-ya">
+            <a href="index.html" class="logo">
+                <div class="logo-txt">yo<span>lo</span>arregl<i class="bi bi-gear-fill"></i>
+                </div>
+            </a>
+            <button class="open-menu" aria-label="Abrir menú">
+                <img src="imagenes/hamburger-icon.svg" alt="abrir menú">
+            </button>
+            <ul class="menu">
+                <button class="close-menu" aria-label="Cerrar menú">
+                    <img src="imagenes/close-icon.svg" alt="cerrar menú">
+                </button>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="unete.html">Únete</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contacto.html" class="selected">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="section-one-contacto">
+            <section class="container-ya">
+                <form>
+                    <h3 class="titulos2"><span>Cotiza con <strong>nosotros</strong></span></h3>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Nombre(s)</label>
+                            <input type="text" class=" form-control" id="inputEmail4" placeholder="Nombre(s)">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Apellidos</label>
+                            <input type="text" class="form-control" id="inputPassword4" placeholder="Apellidos">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="inputAddress">Dirección</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Dirección">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="inputCity">Ciudad</label>
+                            <select id="inputCity" class="form-control">
+                                <option selected disabled>Seleccionar Ciudad</option>
+                                <option>Cancún</option>
+                                <option>Tulum</option>
+                                <option>Playa del Carmen</option>
+                                <option>Mujeres</option>
+                                <option>Mérida</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Escribe tu email">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputTel">Teléfono</label>
+                            <input type="text" class="form-control" placeholder="Teléfono" name="Teléfono"
+                                pattern="[0-9]{10}" title="Escribe tu teléfono a 10 dígitos.">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputMedio">Medio de Contacto</label>
+                            <select id="inputMedio" class="form-control">
+                                <option selected disabled>Seleccionar Medio</option>
+                                <option>Email</option>
+                                <option>Teléfono</option>
+                                <option>WhatsApp</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputServicio">Servicio Requerido</label>
+                            <select id="inputServicio" class="form-control">
+                                <option selected>Albañilería</option>
+                                <option>Limpieza del Hogar</option>
+                                <option>Plomería</option>
+                                <option>Electricidad</option>
+                                <option>Pintura</option>
+                                <option>Impermeabilización</option>
+                                <option>Limpieza de Equipos de AC</option>
+                                <option>Instalación de Equipos</option>
+                                <option>Limpieza de Alberca</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="inputServicio">Cuéntanos sobre tu solicitud</label>
+
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                                Estoy de acuerdo con los términos y condiciones y acepto el aviso de privacidad.
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn1"><a href="#"><i class="bi bi-send"
+                                style="margin-right: 10px;"></i>
+                            Enviar</a></button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer-yoloarreglo">
+        <div class="container-ya footer__todo">
+            <div class="contenedorFooter container-fluid">
+                <div class="todoContenedorFooter row">
+                    <div class="col-sm-4 col-md-2 seccion-footer">
+                        <h5 class="titulo-footer">Locaciones</h5>
+                        Cancún<br>
+                        Tulum<br>
+                        Playa del Carmen<br>
+                        Isla Mujeres<br>
+                        Mérida<br>
+                    </div>
+                    <div class="col-sm-3 col-md-2 seccion-footer">
+                        <h5 class="titulo-footer">Links</h5>
+                        <ul>
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="servicios.html">Servicios</a></li>
+                            <li><a href="unete.html">Únete</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contacto.html">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-5 col-md-4 seccion-footer">
+                        <h5 class="titulo-footer">Sobre nosotros</h5>
+                        Somos una empresa 2.0, estamos aquí para hacer tu vida más memorable, queremos que disfrutes
+                        cada segundo y por eso te ofrecemos los mejores servicios de para que tengas el hogar perfecto.
+                    </div>
+                    <div class="col-md-4 seccion-footer">
+                        <h5 class="titulo-footer">Únete al equipo</h5>
+                        Nos mueve crear, solucionar pero sobre todo arreglar, ¿te animas a formar parte de nuestro
+                        equipo de arregladores profesionales?. Maneja tus propios horarios, aquí tú eres el jefe.
+                    </div>
+                    <div class="col-md-12">
+                        <h5 class="titulo-footer2">Newsletter</h5>
+                        <form class="widget-nl-footer">
+                            <div class="input-nl-footer">
+                                <label for="searchInput"></label>
+                                <input type="email" class="form-control search-form-control"
+                                    placeholder="Ingresa tu correo...">
+                                <button type="submit" class="input-group-nl">
+                                    Suscríbete &nbsp<i class="bi bi-mailbox2"></i>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12 rss-footer" style="text-align: center;"><br>
+                        <i class="bi bi-facebook rrss__logos" style="font-size: 1.3em;"></i>
+                        <i class="bi bi-whatsapp rrss__logos" style="font-size: 1.3em;"></i>
+                        <i class="bi bi-instagram rrss__logos" style="font-size: 1.3em;"></i> <br>
+                        Todos los derechos reservados 2021, yoloarreglo.com <br>Diseñado por: Ulises
+                        Moctezuma.
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script defer src="js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

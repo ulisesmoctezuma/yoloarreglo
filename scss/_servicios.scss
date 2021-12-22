@@ -1,0 +1,214 @@
+// =========================
+/* SERVICIOS*/
+// =========================
+
+// Estilo para que al filtrar el tamaño de la sección sea minimo de 100vh
+.mb-servicios {
+    min-height: 100vh;
+}
+
+// =========================
+/* FILTRO DE ELEMENTOS*/
+// =========================
+
+/* Estilos para el filtro */
+
+#myBtnContainer {
+    gap: 5px;
+    padding-bottom: 25px;
+    padding-left: 15px;
+}
+
+.filterDiv {
+    color: $color5;
+    width: 100%;
+    text-align: center;
+    overflow-x: unset;
+    display: none; // Oculto por default
+}
+
+// La clase "show" agrega a todos los elementos filtrados
+.show {
+    display: block;
+}
+
+// Estilos de los botones de filtro
+.btn-filtro {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: $color5 !important;
+    cursor: pointer;
+}
+
+.btn-filtro:hover {
+    background-color: $color13 !important;
+    transition: all 0.6s ease;
+}
+
+.btn-filtro.active {
+    background-color: $color3 !important;
+    color: $color1;
+}
+
+
+/* Widget arregladores */
+
+.widget-arregladores {
+    background-color: $color5;
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    z-index: 1;
+}
+
+.content-arregladores {
+    padding: 20px;
+}
+
+.img-arreglador {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+
+    img {
+        box-sizing: border-box;
+        border-radius: 100%;
+        padding: 8px;
+        background: linear-gradient(45deg, #241B97 25%, #5f4dbb 100%);
+        margin: auto;
+        width: 120px;
+        height: 120px;
+    }
+
+    img:hover {
+        transform: scale(1.1) rotate(1deg);
+        transform-origin: center center;
+        transition: all 0.6s ease;
+    }
+}
+
+.img-arreglador2 {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+
+    img {
+        box-sizing: border-box;
+        border-radius: 100%;
+        padding: 8px;
+        background: linear-gradient(45deg, #f5d104 25%, #edff49 100%);
+        margin: auto;
+        width: 120px;
+        height: 120px;
+    }
+
+    img:hover {
+        transform: scale(1.1) rotate(1deg);
+        transform-origin: center center;
+        transition: all 0.6s ease;
+    }
+}
+
+.perfil-arregladores {
+    text-decoration: none;
+}
+
+.verificado {
+    background-color: $color5;
+    color: $color11;
+    font-size: 18px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 100%;
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.informacion-arreglador h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 0;
+    color: $color1
+}
+
+.espacialidad-arreglador {
+    font-size: 14px;
+    color: $color9;
+}
+
+.lugar-arreglador {
+    color: $color9;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.bi-star,
+.bi-star-fill,
+.bi-star-half {
+    color: $color3
+}
+
+.promedio-rating {
+    font-size: 14px;
+    color: $color9;
+    font-weight: 500;
+}
+
+.precio-arreglador {
+    font-size: 20px;
+    font-weight: bold;
+    color: $color11;
+}
+
+.contratar-arreglador {
+    text-align: center;
+}
+
+.btn-perfil-arreglador {
+    width: 100%;
+    background: linear-gradient(45deg, #f5d104 25%, #f1da08 100%);
+    display: inline-block;
+    border-radius: 0;
+    border-color: transparent;
+    text-transform: capitalize;
+    font-family: $fontfam1;
+    font-size: $fontsizess;
+    font-weight: 500;
+    color: $color1;
+    padding: 10px 15px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    text-decoration: none !important;
+}
+
+.btn-perfil-arreglador:hover {
+    color: $color1;
+    filter: contrast(115%);
+    font-weight: 800;
+    transition: all 0.6s ease;
+}
+
+/* Formulario contratar arreglador */
+
+.modal-header-arreglador {
+    text-align: center !important;
+}
+
+.btn-close-arreglador {
+    padding-top: 1rem !important;
+    color: $color5 !important;
+}
