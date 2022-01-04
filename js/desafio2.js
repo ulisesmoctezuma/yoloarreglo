@@ -40,7 +40,7 @@ function correr() {
         // aplicacion de descuentos para 3 o mas servicios al mes
         let calculo_con_desc_15 = calculo_servicio - (calculo_servicio * desc_3_a_5); //costo con 15% de descuento
         let calculo_con_desc_15_2des = calculo_con_desc_15.toFixed(2);
-        let calculo_50_15 = calculo_con_desc_15 - (calculo_con_desc_25 * desc_50); //costo con 15% de descuento y 50% adicional por contratar por primera vez
+        let calculo_50_15 = calculo_con_desc_15 - (calculo_con_desc_15 * desc_50); //costo con 15% de descuento y 50% adicional por contratar por primera vez
         let calculo_50_15_2des = calculo_50_15.toFixed(2);
 
         // aplicacion de descuentos para 1 o mas servicios al mes
@@ -54,12 +54,14 @@ function correr() {
         else if ((serviciomensual_c >= 6) && ((tipo_cliente == "no") || (tipo_cliente == "No") || (tipo_cliente == "NO"))){
             alert(`${nombre}, gracias por cotizar con nosotros, tu casa cuenta con ${metros_c} m2, ${habitaciones_c} habitacion(nes) y ${baños_c} baño(s). Hemos aplicado un 25% por contratar 6 o más servicios al mes. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_con_desc_25_2des} MXN con IVA incluido (${serviciomensual_c} servicio(s) por mes)`);
         }
+        //-------
         else if ((serviciomensual_c >= 3) && ((tipo_cliente == "si") || (tipo_cliente == "sí") || (tipo_cliente == "Si") || (tipo_cliente == "Sí") || (tipo_cliente == "SI") || (tipo_cliente == "SÍ"))){
-            alert(`${nombre}, gracias por cotizar con nosotros, tu casa cuenta con ${metros_c} m2, ${habitaciones_c} habitacion(nes) y ${baños_c} baño(s). Hemos aplicado un 15% por contratar 3 o más servicios al mes y un 50% adicional por contratar por primera vez. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_50_15_2des} MXN con IVA incluido (${serviciomensual_c} servicio(s) por mes)`);
+            alert(`${nombre}, gracias por cotizar con nosotros ${calculo_servicio} ${calculo_con_desc_15_2des} ${calculo_50_15}, tu casa cuenta con ${metros_c} m2, ${habitaciones_c} habitacion(nes) y ${baños_c} baño(s). Hemos aplicado un 15% por contratar 3 o más servicios al mes y un 50% adicional por contratar por primera vez. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_50_15_2des} MXN con IVA incluido (${serviciomensual_c} servicio(s) por mes)`);
         }
         else if ((serviciomensual_c >= 3) && ((tipo_cliente == "no") || (tipo_cliente == "No") || (tipo_cliente == "NO"))){
-            alert(`${nombre}, gracias por cotizar con nosotros, tu casa cuenta con ${metros_c} m2, ${habitaciones_c} habitacion(nes) y ${baños_c} baño(s). Hemos aplicado un 25% por contratar 6 o más servicios al mes. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_con_desc_15_2des} MXN con IVA incluido (${serviciomensual_c} servicio(s) por mes)`);
+            alert(`${nombre}, gracias por cotizar con nosotros, tu casa cuenta con ${metros_c} m2, ${habitaciones_c} habitacion(nes) y ${baños_c} baño(s). Hemos aplicado un 15% por contratar 3 o más servicios al mes. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_con_desc_15_2des} MXN con IVA incluido (${serviciomensual_c} servicio(s) por mes)`);
         }
+        //-------
         else if ((serviciomensual_c >= 1) && ((tipo_cliente == "si") || (tipo_cliente == "sí") || (tipo_cliente == "Si") || (tipo_cliente == "Sí") || (tipo_cliente == "SI") || (tipo_cliente == "SÍ"))){
             alert(`${nombre}, gracias por cotizar con nosotros, tu casa cuenta con ${metros_c} m2, ${habitaciones_c} habitacion(nes) y ${baños_c} baño(s). Hemos aplicado un 50% adicional por contratar por primera vez. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_50_2des} MXN con IVA incluido (${serviciomensual_c} servicio(s) por mes)`);
         }
@@ -107,12 +109,14 @@ function correr() {
         else if ((serviciomensual_d >= 6) && ((tipo_cliente == "no") || (tipo_cliente == "No") || (tipo_cliente == "NO"))){
             alert(`${nombre}, gracias por cotizar con nosotros, tu departamento cuenta con ${metros_d} m2, ${habitaciones_d} habitacion(nes) y ${baños_d} baño(s). Hemos aplicado un 25% por contratar 6 o más servicios al mes. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_con_desc_25_2des} MXN con IVA incluido (${serviciomensual_d} servicio(s) por mes).`);
         }
+        //-------
         else if ((serviciomensual_d >= 3) && ((tipo_cliente == "si") || (tipo_cliente == "sí") || (tipo_cliente == "Si") || (tipo_cliente == "Sí") || (tipo_cliente == "SI") || (tipo_cliente == "SÍ"))){
             alert(`${nombre}, gracias por cotizar con nosotros, tu departamento cuenta con ${metros_d} m2, ${habitaciones_d} habitacion(nes) y ${baños_d} baño(s). Hemos aplicado un 15% por contratar 3 o más servicios al mes y un 50% adicional por contratar por primera vez. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_50_15_2des} MXN con IVA incluido (${serviciomensual_d} servicio(s) por mes).`);
         }
         else if ((serviciomensual_d >= 3) && ((tipo_cliente == "no") || (tipo_cliente == "No") || (tipo_cliente == "NO"))){
             alert(`${nombre}, gracias por cotizar con nosotros, tu departamento cuenta con ${metros_d} m2, ${habitaciones_d} habitacion(nes) y ${baños_d} baño(s). Hemos aplicado un 25% por contratar 6 o más servicios al mes. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_con_desc_15_2des} MXN con IVA incluido (${serviciomensual_d} servicio(s) por mes).`);
         }
+        //-------
         else if ((serviciomensual_d >= 1) && ((tipo_cliente == "si") || (tipo_cliente == "sí") || (tipo_cliente == "Si") || (tipo_cliente == "Sí") || (tipo_cliente == "SI") || (tipo_cliente == "SÍ"))){
             alert(`${nombre}, gracias por cotizar con nosotros, tu departamento cuenta con ${metros_d} m2, ${habitaciones_d} habitacion(nes) y ${baños_d} baño(s). Hemos aplicado un 50% adicional por contratar por primera vez. La limpieza de tu hogar tiene un costo calculado mensual de $${calculo_50_2des} MXN con IVA incluido (${serviciomensual_d} servicio(s) por mes).`);
         }

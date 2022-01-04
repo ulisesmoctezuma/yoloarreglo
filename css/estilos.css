@@ -6,6 +6,11 @@
   padding: 0;
 }
 
+a:focus {
+  outline: 0.5px solid #a8a8a8;
+  border-radius: 0.5px;
+}
+
 /* VARIABLES GENERALES PARA EL SITIO*/
 html {
   height: 100%;
