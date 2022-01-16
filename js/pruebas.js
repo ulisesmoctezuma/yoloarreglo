@@ -1,22 +1,6 @@
-class Tienda {
-    constructor(nombre, direccion, propietario, rubro) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.propietario = propietario;
-        this.rubro = rubro;
-    }
-}
+let iterable = [10, 20, 30];
 
-let ingresados = '';
-for (let index = 0; index < 5; index++) {
-    let tienda = new Tienda(prompt("NOMBRE"),
-        prompt("DIRECCION"),
-        prompt("PROPIETARIO"),
-        prompt("RUBRO"));
-
-    ingresados += "Tienda: " + tienda.nombre + " " +
-        "Direccion: " + tienda.direccion + " " +
-        "Propitario: " + tienda.propietario + " " +
-        "rubro: " + tienda.rubro + "\n";
+for (let value of iterable) {
+    value += 1;
+    alert(`Hola soy el ${value}`);
 }
-alert(ingresados);

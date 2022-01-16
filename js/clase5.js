@@ -17,7 +17,6 @@ const personaje = {
 console.log(personaje.nombre);
 console.log(personaje["edad"]);
 
-*/
 
 /*Crear una funcion constructor
 
@@ -30,7 +29,6 @@ function Persona(first, last, age, iq, nicknames) {
     this.ci = iq;
     this.apodos = nicknames;
 }
-*/
 
 /*Instanciar un objeto mediante constructor
 const persona1 = new Persona("Sheldon", "Cooper", 41, 187, ["Shelly", "Sweetie", "Moonpie", "Dr Dumbass", "The Skinny Weirdo"]);

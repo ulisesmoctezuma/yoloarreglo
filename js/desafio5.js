@@ -106,59 +106,20 @@ function correr() {
         }
     }
 
+    while (preguntar) {
+        otrosEspacios = parseInt(prompt(`¿Cuantas veces al mes deseas que limpiemos tu ${tipo.toLowerCase()}?`));
+        if (frequenciaLimpieza >= 1) {
+            break;
+        } else {
+            alert("Has ingresado un dato incorrecto, por favor intenta nuevamente.");
+            continue;
+        }
+    }
+
     const hogar = new Hogar(nombre, tipo, habitaciones, banos, habitantes, mascotas, frequenciaLimpieza);
 
     hogar.mostrarDatos();
     hogar.despedir();
-
-    // class Person {
-    //     constructor(first, last, age, gender, interests) {
-    //         this.name = {
-    //             first,
-    //             last
-    //         };
-    //         this.age = age;
-    //         this.gender = gender;
-    //         this.interests = interests;
-    //     }
-
-    //     greeting() {
-    //         console.log(`Hi! I'm ${this.name.first}`);
-    //     };
-
-    //     farewell() {
-    //         console.log(`${this.name.first} has left the building. Bye for now!`);
-    //     };
-    // }
-
-    // let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
-    // han.greeting();
-    // // Hi! I'm Han
-
-    // let leia = new Person('Leia', 'Organa', 19, 'female', ['Government']);
-    // leia.farewell();
-    // // Leia has left the building. Bye for now
-
-    // class Teacher extends Person {
-    //     constructor(first, last, age, gender, interests, subject, grade) {
-    //         super(first, last, age, gender, interests);
-
-    //         // subject and grade are specific to Teacher
-    //         this.subject = subject;
-    //         this.grade = grade;
-    //     }
-    // }
-
-    // let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
-    // snape.greeting(); // Hi! I'm Severus.
-    // snape.farewell(); // Severus has left the building. Bye for now.
-    // snape.age; // 58
-    // snape.subject; // Dark arts
-
-
-
-
-
 
     // // Precios
     // const costoAdicionalDpto = 0.15; // Porcentaje adicional a cobrar en caso de ser departamento
