@@ -121,7 +121,7 @@ function correr() {
     const otrosEspaciosLimp = [];
 
     for (let espacios of otrosEspacios) {
-        let respuestaOtroEspacio = prompt(`¿Deseas que limpiemos tu ${espacios}?\nResponde si/no`);
+        let respuestaOtroEspacio = prompt(`¿Deseas que limpiemos tu ${espacios}?\nResponde si/no`).toLowerCase();
         if ((respuestaOtroEspacio == "si") || (respuestaOtroEspacio == "sí")) {
             let respuesta = espacios;
             otrosEspaciosLimp.push(respuesta);
