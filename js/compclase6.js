@@ -87,46 +87,4 @@ function correr2() {
         default:
             alert("Error, intente nuevamente.");
     }
-
-
-
-
-    // class Producto {
-    //     constructor(nombre, precio) {
-    //         this.nombre = nombre.toUpperCase();
-    //         this.precio = parseFloat(precio);
-    //         this.vendido = false;
-    //     }
-    //     sumaIva() {
-    //         alert(this.precio * 1.21);
-    //     }
-
-    //     mostrarProductos() {
-    //         alert("Nombre: " + this.nombre + "precio" + this.precio + "Vendido: " + this.vendido)
-    //     }
-    // }
-    // //Declaramos un array de productos para almacenar objetos
-    // const productos = [];
-    // productos.push(new Producto("fideo", "125"));
-    // productos.push(new Producto("arroz", "70"));
-    // productos.push(new Producto("pan", "50"));
-    // //Iteramos el array con for...of para modificarlos a todos
-
-    // productos.sort((a, b) => {
-    //     return a.precio - b.precio;
-    // });
-
-    // productos.forEach((e) => {
-    //     alert(`${e.nombre} ${e.precio} ${e.vendido}`)
-    // })
-
-    // for (const producto of productos)
-    //     producto.mostrarProductos();
-
-
-
-    // mostrarPlanetas() {
-    //     alert("Nombre: " + this.nombre + "\n" + "Radio: " + this.radio + "\n" + "Distancia desde el Sol: " + this.distancia);
-    // }
-    // planetas.ordenAlfabetico();
 }
