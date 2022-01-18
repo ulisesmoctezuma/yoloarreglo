@@ -12,7 +12,7 @@ function correr() {
         }
 
         mostrarDatos() {
-            alert("A continuación te mostramos los datos que ingresaste para tu cotización." + "\n" + "\n" + "Solicitante: " + this.nombre + "\n" + "Tipo de hogar: " + this.tipo + "\n" + "Habitaciones: " + this.habitaciones + "\n" + "Baños: " + this.banos + "\n" + "Habitantes: " + this.habitantes + "\n" + "Mascotas: " + this.mascotas + "\n" + "Frequencia mensual de limpieza: " + this.frequenciaLimpieza);
+            alert("Datos ingresados:" + "\n" + "\n" + "Solicitante: " + this.nombre + "\n" + "Tipo de hogar: " + this.tipo + "\n" + "Habitaciones: " + this.habitaciones + "\n" + "Baños: " + this.banos + "\n" + "Habitantes: " + this.habitantes + "\n" + "Mascotas: " + this.mascotas + "\n" + "Frequencia mensual de limpieza: " + this.frequenciaLimpieza);
         };
 
         despedir() {
