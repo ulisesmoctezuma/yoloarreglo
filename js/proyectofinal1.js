@@ -89,7 +89,7 @@ function correr() {
 
             // Calcular subtotal
 
-            let totalCotizacion = subtotal * 1.16 //IVA 16%
+            let totalCotizacion = (subtotal * 1.16).toFixed(2); //IVA 16%
 
             alert("Gracias por cotizar con nosotros, el total de tu cotización de acuerdo a los datos ingresados es de $ " + totalCotizacion + " con IVA incluido.")
         }
