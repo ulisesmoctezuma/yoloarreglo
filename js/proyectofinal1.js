@@ -212,5 +212,4 @@ function correr() {
     hogar.cotizarLimpieza();
     hogar.despedir();
 
-
 }

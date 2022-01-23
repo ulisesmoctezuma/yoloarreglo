@@ -1,6 +1,13 @@
-let iterable = [10, 20, 30];
+function correr() {
+    function domTest() {
+        let contenedorCotizador = document.createElement("div");
+        contenedorCotizador.innerHTML = `<h2>Cotización de limpieza residencial</h2>
+                                        <h4>Cliente:</h4>
+                                        <p id="nombre-cliente">Ulises Moctezuma</p><br>
+        
+        `;
+        document.getElementById('cotizador').appendChild(contenedorCotizador);
+    }
 
-for (let value of iterable) {
-    value += 1;
-    alert(`Hola soy el ${value}`);
+    domTest();
 }
