@@ -1,155 +1,167 @@
 // =========================
-/* INICIO - SECCIÓN 1 */
+/* INICIO - SECCIÓN 1 
+https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/full_screen_preview/34264843?_ga=2.263871433.491501574.1643039397-1321585728.1636602607&_gac=1.121541370.1641488116.Cj0KCQiAw9qOBhC-ARIsAG-rdn5m3iy3RS7Mon6z6OeCmMVm7gBn5CLoHkWHYdbsup7gTPbD7FbGZ_waAt7bEALw_wcB*/
 // =========================
+
+/* Sileder principal */
+
+.back-principal {
+  background: $color8, url(../imagenes/yla-limpieza1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.contenido-principal {
+  h1 {
+    color: $color5;
+    font-size: 60px;
+  }
+}
 
 /* Estilos somos expertos en arreglar */
 
 .container-portada {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    width: auto;
-    padding-bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: auto;
+  padding-bottom: 0;
 }
 
 /* Estilos texto para portada */
 
 .portada {
-    justify-content: space-around;
-    width: 100%;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0;
+
+  h1 {
+    color: $color5;
+    font-size: $fontsizess + 20;
+    text-align: left;
     margin: 0;
+    font-family: $fontfam1;
+    font-weight: 300;
 
-    h1 {
-        color: $color5;
-        font-size: $fontsizess + 20;
-        text-align: left;
-        margin: 0;
-        font-family: $fontfam1;
-        font-weight: 300;
+    p {
+      color: $color5;
+      font-weight: 800;
+    }
+  }
 
-        p {
-            color: $color5;
-            font-weight: 800;
-        }
+  div {
+    color: $color1;
+    margin: 0;
+    line-height: 1.3;
+    animation-duration: 4s;
+    animation-name: show;
+    padding-top: 0.5em;
+
+    @keyframes show {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
     }
 
     div {
-        color: $color1;
-        margin: 0;
-        line-height: 1.3;
-        animation-duration: 4s;
-        animation-name: show;
-        padding-top: 0.5em;
-
-        @keyframes show {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        div {
-            color: $color5;
-            padding-top: 0.5em;
-            padding-bottom: 0.5em;
-        }
+      color: $color5;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
     }
+  }
 }
 
 /* Estilo para ocultar imagen de mujer pensando en la versión mobile */
 
 .portada-logo {
-    display: none;
+  display: none;
 }
 
 /* Estilos para servicios más solicitados */
 
 .masSolicitados {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  // Estilos para imagenes de servicios más solicitados
+  ul {
+    display: inline-flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    gap: 15px;
+    width: 100%;
+    @include mprst; // Margin y padding reset, encontrado en _variables
 
-    // Estilos para imagenes de servicios más solicitados
-    ul {
-        display: inline-flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 15px;
+    li {
+      width: 100%;
+      height: 150px;
+      display: inline-block;
+
+      div {
         width: 100%;
-        @include mprst; // Margin y padding reset, encontrado en _variables
+        height: 100%;
+        position: relative;
+        cursor: pointer;
+        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3 ease-in-out;
+        -moz-transition: 0.3s ease-in-out, -moz-transform 0.3 ease-in-out;
+        transition: 0.3s ease-in-out, transform 0.3 ease-in-out;
+        background-size: cover;
+        border-radius: 0.3em;
 
-        li {
-            width: 100%;
-            height: 150px;
-            display: inline-block;
-
-            div {
-                width: 100%;
-                height: 100%;
-                position: relative;
-                cursor: pointer;
-                -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3 ease-in-out;
-                -moz-transition: 0.3s ease-in-out, -moz-transform 0.3 ease-in-out;
-                transition: 0.3s ease-in-out, transform 0.3 ease-in-out;
-                background-size: cover;
-                border-radius: 0.3em;
-
-                div {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100%;
-                    a {
-                        text-decoration: none !important;
-                        h4 {
-                            color: $color5;
-                            font-family: $fontfam1;
-                            font-size: 20px;
-                            font-weight: 400;
-                            text-shadow: 0.5px 0.5px 5px $color1;
-                            position: relative;
-                            padding-bottom: 10px;
-                        }
-                        
-                        h4::after {
-                            content: "";
-                            width: 25px;
-                            height: 5px;
-                            background: $color13;
-                            left: 0px;
-                            right: 0px;
-                            bottom: 0;
-                            position: absolute;
-                            border-radius: 50px;
-                            margin: auto;
-                        }
-                    }
-                    a :hover {
-                        text-decoration: none !important;
-                    }
-                }
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          a {
+            text-decoration: none !important;
+            h4 {
+              color: $color5;
+              font-family: $fontfam1;
+              font-size: 20px;
+              font-weight: 400;
+              text-shadow: 0.5px 0.5px 5px $color1;
+              position: relative;
+              padding-bottom: 10px;
             }
-            div:hover {
-                transform: scale(1.10);
+
+            h4::after {
+              content: "";
+              width: 25px;
+              height: 5px;
+              background: $color13;
+              left: 0px;
+              right: 0px;
+              bottom: 0;
+              position: absolute;
+              border-radius: 50px;
+              margin: auto;
             }
+          }
+          a :hover {
+            text-decoration: none !important;
+          }
         }
+      }
+      div:hover {
+        transform: scale(1.1);
+      }
     }
+  }
 }
 
 /* Función @each para definir el background de los 4 servicios más solicitados */
 
-@each $mainservices in plomeria,
-electricidad,
-pintura,
-albanileria {
-    .caja-img-#{$mainservices} {
-        border: 1.8px solid $color5;
-        background: $color8,
-        url('../imagenes/#{$mainservices}.jpg');
-    }
+@each $mainservices in plomeria, electricidad, pintura, albanileria {
+  .caja-img-#{$mainservices} {
+    border: 1.8px solid $color15;
+    background: $color8, url("../imagenes/#{$mainservices}.jpg");
+  }
 }
 
 // =========================
@@ -158,48 +170,47 @@ albanileria {
 
 /* Estilos para  dar formato al texto */
 .section-two-portada {
-    div {
-        color: $color5;
-        font-family: $fontfam1;
-    }
+  div {
+    color: $color1;
+    font-family: $fontfam1;
+  }
 }
 
 .comoFunciona-titulo {
-    text-align: center;
-    padding-top: 25px;
-    padding-bottom: 25px;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .comoFunciona-1p {
-    font-size: $fontsizess + 20px;
-    margin-block-end: 0;
-    margin-block-start: 0;
-    line-height: 1.25;
-    font-weight: 300;
+  font-size: $fontsizess + 20px;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  line-height: 1.25;
+  font-weight: 300;
 }
 
 .comoFunciona-2p {
-    font-size: $fontsizess + 20px;
-    margin-block-end: 0;
-    margin-block-start: 0;
-    line-height: 1.25;
-    font-weight: 300;
-
+  font-size: $fontsizess + 20px;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  line-height: 1.25;
+  font-weight: 300;
 }
 
 .comoFunciona-3p {
-    color: $color3;
-    font-weight: 800;
+  color: $color13;
+  font-weight: 800;
 }
 
 .todoComoFunciona {
-    text-align: center;
-    margin: 0 !important;
-    padding-bottom: 25px;
+  text-align: center;
+  margin: 0 !important;
+  padding-bottom: 25px;
 
-    strong {
-        font-weight: 600;
-    }
+  strong {
+    font-weight: 600;
+  }
 }
 
 // =========================
@@ -209,33 +220,32 @@ albanileria {
 /* Estilos buscador de servicios */
 
 .section-three-portada {
-    background: $color8,
-        url(../imagenes/hogar_perfecto.jpg);
-    background-size: cover;
-    background-position: center;
+  background: $color8, url(../imagenes/hogar_perfecto.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .contenedor-buscador {
-    padding-top: 150px;
-    padding-bottom: 150px;
+  padding-top: 150px;
+  padding-bottom: 150px;
 }
 
 .buscador-index {
-    margin: auto;
-    margin-bottom: 0 !important;
-    align-items: center;
-    max-width: 350px !important;
-    padding-bottom: 25px;
+  margin: auto;
+  margin-bottom: 0 !important;
+  align-items: center;
+  max-width: 350px !important;
+  padding-bottom: 25px;
 }
 
 .buscador-index-btn {
-    margin: auto;
-    align-items: center;
-    max-width: 120px !important;
+  margin: auto;
+  align-items: center;
+  max-width: 120px !important;
 }
 
 .height-buscador {
-    height: auto;
+  height: auto;
 }
 
 // =========================
@@ -245,220 +255,214 @@ albanileria {
 /* Breaing points - Small 	≥576px */
 
 @media (min-width: $minwqsmall) {
-
-    // Sección 1 - Inicio
-    .portada {
-
-        h1 {
-            font-size: $fontsizess + 35px;
-            text-align: left;
-        }
-
-        div {
-            strong {
-                font-size: $fontsizess + 50px;
-            }
-        }
+  // Sección 1 - Inicio
+  .portada {
+    h1 {
+      font-size: $fontsizess + 35px;
+      text-align: left;
     }
 
-    .masSolicitados {
-        justify-content: space-between;
-
-        ul {
-            justify-content: space-between;
-            width: 100%;
-            li {
-                width: 240.5px;
-                margin: 0;
-            }
-        }
+    div {
+      strong {
+        font-size: $fontsizess + 50px;
+      }
     }
+  }
 
-    // Sección 2 - Como funciona
-    .comoFunciona-titulo h3 {
-        font-size: $fontsizess-t;
-    }
+  .masSolicitados {
+    justify-content: space-between;
 
-    .comoFunciona-1p {
-        font-size: $fontsizess + 28px;
+    ul {
+      justify-content: space-between;
+      width: 100%;
+      li {
+        width: 240.5px;
+        margin: 0;
+      }
     }
+  }
 
-    .comoFunciona-2p {
-        font-size: $fontsizess + 28px;
-    }
+  // Sección 2 - Como funciona
+  .comoFunciona-titulo h3 {
+    font-size: $fontsizess-t;
+  }
+
+  .comoFunciona-1p {
+    font-size: $fontsizess + 28px;
+  }
+
+  .comoFunciona-2p {
+    font-size: $fontsizess + 28px;
+  }
 }
 
 /* Breaing points - Medium 	≥576px */
 
 @media (min-width: $minwqmed) {
+  .contenido-principal {
+    h1 {
+      font-size: 100px;
+    }
+  }
 
-    // Sección 1 - Inicio
-    .container-portada {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        width: 100%;
+  // Sección 1 - Inicio
+  .container-portada {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .portada {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 45%;
+
+    h1 {
+      font-size: $fontsizels + 35px;
     }
 
-    .portada {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        width: 45%;
+    div {
+      font-size: $fontsizels;
 
-        h1 {
-            font-size: $fontsizels + 35px;
-        }
-
-        div {
-            font-size: $fontsizels;
-
-            strong {
-                font-size: $fontsizels + 10px;
-            }
-        }
+      strong {
+        font-size: $fontsizels + 10px;
+      }
     }
+  }
 
-    .portada-logo {
-        display: flex;
-        justify-content: space-around;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
+  .portada-logo {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  .profile-img-section {
+    position: relative;
+  }
+
+  .profile-info {
+    margin-bottom: 25px;
+  }
+
+  .profile-img {
+    height: 380px;
+    justify-content: right;
+    align-items: flex-end;
+    box-shadow: rgba(2, 11, 90, 0.25) 1.95px 1.95px 3.6px;
+  }
+
+  .profile-img-line {
+    background-color: $color3;
+    height: 4px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border-radius: 0.2em;
+  }
+
+  // Sección 1 - Más solicitados
+  .masSolicitados {
+    ul {
+      li {
+        width: 160.75px;
+      }
     }
+  }
 
-    .profile-img-section {
-        position: relative;
-    }
+  // Sección 2 - Como funciona
+  .comoFunciona-1p {
+    font-size: $fontsizels + 28px;
+  }
 
-    .profile-info {
-        margin-bottom: 25px;
-    }
-
-    .profile-img {
-        height: 380px;
-        justify-content: right;
-        align-items: flex-end;
-        box-shadow: rgba(2, 11, 90, 0.25) 1.95px 1.95px 3.6px;
-    }
-
-    .profile-img-line {
-        background-color: $color3;
-        height: 4px;
-        position: absolute;
-        width: 100%;
-        left: 0;
-        bottom: 0;
-        border-radius: 0.2em;
-    }
-
-    // Sección 1 - Más solicitados
-    .masSolicitados {
-
-        ul {
-            li {
-                width: 160.75px;
-            }
-        }
-    }
-
-    // Sección 2 - Como funciona
-    .comoFunciona-1p {
-        font-size: $fontsizels + 28px;
-    }
-
-    .comoFunciona-2p {
-        font-size: $fontsizels + 28px;
-    }
+  .comoFunciona-2p {
+    font-size: $fontsizels + 28px;
+  }
 }
 
 /* Breaing points - Large 	≥992px */
 
 @media (min-width: $minwqlarge) {
-
-    // Sección 1 - Inicio
-    .portada {
-        h1 {
-            font-size: $fontsizels + 40px;
-        }
-
-        div {
-            padding-bottom: 0;
-        }
+  // Sección 1 - Inicio
+  .portada {
+    h1 {
+      font-size: $fontsizels + 40px;
     }
 
-    // Sección 1 - Más solicitados
-    .masSolicitados {
-        ul {
-            li {
-                width: 211.75px;
-
-            }
-
-        }
+    div {
+      padding-bottom: 0;
     }
+  }
 
-    // Sección 2 - Como funciona
-    .comoFunciona-1p {
-        font-size: $fontsizels + 33px;
+  // Sección 1 - Más solicitados
+  .masSolicitados {
+    ul {
+      li {
+        width: 211.75px;
+      }
     }
+  }
 
-    .comoFunciona-2p {
-        font-size: $fontsizels + 33px;
-    }
+  // Sección 2 - Como funciona
+  .comoFunciona-1p {
+    font-size: $fontsizels + 33px;
+  }
 
+  .comoFunciona-2p {
+    font-size: $fontsizels + 33px;
+  }
 }
 
 /* Breaing points - Extra Large ≥1200px */
 
 @media (min-width: $minwqxlarge) {
-
-    // Sección 1 - Inicio 
-    .portada {
-        h1 {
-            font-size: $fontsizels + 45px;
-        }
+  // Sección 1 - Inicio
+  .portada {
+    h1 {
+      font-size: $fontsizels + 45px;
     }
+  }
 
-    // Sección 2 - Como funciona
-    .comoFunciona-1p {
-        font-size: $fontsizels + 40px;
-    }
+  // Sección 2 - Como funciona
+  .comoFunciona-1p {
+    font-size: $fontsizels + 40px;
+  }
 
-    .comoFunciona-2p {
-        font-size: $fontsizels + 40px;
-    }
+  .comoFunciona-2p {
+    font-size: $fontsizels + 40px;
+  }
 }
 
 /* Breaking points - Extra extra large ≥1400px*/
 
 @media (min-width: $minwqxxlarge) {
-
-    // Sección 1 - Inicio
-    .portada {
-        h1 {
-            font-size: $fontsizels + 50px;
-        }
+  // Sección 1 - Inicio
+  .portada {
+    h1 {
+      font-size: $fontsizels + 50px;
     }
+  }
 
-    // Sección 1 - Más solicitados
-    .masSolicitados {
-
-        ul {
-            li {
-                width: 288.75px;
-                height: 200px;
-            }
-        }
-
+  // Sección 1 - Más solicitados
+  .masSolicitados {
+    ul {
+      li {
+        width: 288.75px;
+        height: 200px;
+      }
     }
+  }
 
-    // Sección 2 - Como funciona
-    .comoFunciona-1p {
-        font-size: $fontsizels + 45px;
-    }
+  // Sección 2 - Como funciona
+  .comoFunciona-1p {
+    font-size: $fontsizels + 45px;
+  }
 
-    .comoFunciona-2p {
-        font-size: $fontsizels + 45px;
-    }
+  .comoFunciona-2p {
+    font-size: $fontsizels + 45px;
+  }
 }

@@ -128,7 +128,6 @@ function correr() {
             `;
             document.getElementById('cotizador').appendChild(contenedorCotizador);
 
-
             for (let otrosEspacios of precioOtrosEspacios) {
                 let filasOtrosEspacios = document.createElement("tr");
                 filasOtrosEspacios.innerHTML =

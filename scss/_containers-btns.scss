@@ -4,66 +4,74 @@
 
 /* Boton 1 */
 
-
 .btn1 {
-    background: linear-gradient(45deg, #f5d104 25%, #f1da08 100%);
-    font-family:$fontfam1;
+  background: $color13;
+  font-family: $fontfam1;
+  font-size: $fontsizess;
+  color: $color1 !important;
+  font-weight: 500;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  @media (min-width: $minwqlarge) {
     font-size: $fontsizess;
-    font-weight: 500;
-    padding: 6px 10px;
-    margin-top: 15px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-
-    a {
-        color: $color1 !important;
-        text-decoration: none !important;
-    }
-
-    a:hover{
-        color: $color1 !important;
-    }
-
-    @media (min-width: $minwqlarge) {
-        font-size: $fontsizess;
-    }
+  }
 }
 
 .btn1:hover {
-    filter: contrast(115%);
-    font-weight: 800;
+  filter: contrast(120%);
 }
 
 /* Boton 2 */
 
 .btn2 {
-    background: $color1;
-    font-family: $fontfam1;
+  background: $color1;
+  font-family: $fontfam1;
+  font-size: $fontsizess;
+  color: $color5 !important;
+  font-weight: 500;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  @media (min-width: $minwqlarge) {
     font-size: $fontsizess;
-    font-weight: 700;
-    padding: 0.5em 1.2em;
-    margin-top: 15px;
-    border-radius: 2em;
-    border: none;
-    cursor: pointer;
-
-    a {
-        color: $color3;
-        text-decoration: none !important;
-    }
-
-    a:hover{
-        color: $color3;
-    }
-
-    @media (min-width: $minwqlarge) {
-        font-size: $fontsizels;
-    }
+  }
 }
 
 .btn2:hover {
-    filter: contrast(135%);
+  filter: contrast(120%);
+}
+
+/* Boton 3 */
+
+.btn3 {
+  background: $color5;
+  font-family: $fontfam1;
+  font-size: $fontsizess;
+  color: $color1 !important;
+  font-weight: 500;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  @media (min-width: $minwqlarge) {
+    font-size: $fontsizess;
+  }
+}
+
+.btn3:hover {
+  filter: contrast(120%);
 }
 
 $conpt: 25px; // Padding top container
@@ -78,36 +86,35 @@ $maxwclarge: 415px;
 
 //Mobile first <576px
 .container-ya {
-    width: auto;
-    margin: 0 20px 0 20px;
-    padding-top: $conpt;
-    padding-bottom: $conpb;
+  width: auto;
+  margin: 0 20px 0 20px;
+  padding-top: $conpt;
+  padding-bottom: $conpb;
 
-    //Small ≥576px
-    @media (min-width: $minwqsmall) {
-        max-width: $maxwqsmall;
-        margin: auto;
+  //Small ≥576px
+  @media (min-width: $minwqsmall) {
+    max-width: $maxwqsmall;
+    margin: auto;
+  }
 
-    }
+  //Medium ≥768px
+  @media (min-width: $minwqmed) {
+    max-width: $maxwqmed;
+  }
 
-    //Medium ≥768px
-    @media (min-width: $minwqmed) {
-        max-width: $maxwqmed;
-    }
+  //Large ≥992px
+  @media (min-width: $minwqlarge) {
+    max-width: $maxwqlarge;
+  }
 
-    //Large ≥992px
-    @media (min-width: $minwqlarge) {
-            max-width: $maxwqlarge;
-    }
+  //Extra large ≥1200px
+  @media (min-width: $minwqxlarge) {
+    max-width: $maxwqxlarge;
+  }
 
-    //Extra large ≥1200px
-    @media (min-width: $minwqxlarge) {
-        max-width: $maxwqxlarge;
-    }
+  //Extra Extra Large ≥1400px
 
-    //Extra Extra Large ≥1400px
-
-@media (min-width: $minwqxxlarge) {
-        max-width: $maxwqxxlarge;
-    }
+  @media (min-width: $minwqxxlarge) {
+    max-width: $maxwqxxlarge;
+  }
 }
