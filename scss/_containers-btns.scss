@@ -70,7 +70,52 @@
   }
 }
 
-.btn3:hover {
+.btn4:hover {
+  filter: contrast(120%);
+}
+
+.btn4 {
+  background: $color1;
+  font-family: $fontfam1;
+  font-size: $fontsizess;
+  color: $color5 !important;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  @media (min-width: $minwqlarge) {
+    font-size: $fontsizess;
+  }
+}
+
+.btn4:hover {
+  color: $color13 !important;
+  filter: contrast(120%);
+}
+
+.btn5 {
+  background: $color19;
+  font-family: $fontfam1;
+  font-size: $fontsizess;
+  color: $color5 !important;
+  font-weight: 500;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  @media (min-width: $minwqlarge) {
+    font-size: $fontsizess;
+  }
+}
+
+.btn5:hover {
   filter: contrast(120%);
 }
 
