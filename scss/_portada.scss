@@ -75,95 +75,6 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   }
 }
 
-/* Estilo para ocultar imagen de mujer pensando en la versión mobile */
-
-.portada-logo {
-  display: none;
-}
-
-/* Estilos para servicios más solicitados */
-
-.masSolicitados {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  // Estilos para imagenes de servicios más solicitados
-  ul {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 15px;
-    width: 100%;
-    @include mprst; // Margin y padding reset, encontrado en _variables
-
-    li {
-      width: 100%;
-      height: 150px;
-      display: inline-block;
-
-      div {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        cursor: pointer;
-        -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3 ease-in-out;
-        -moz-transition: 0.3s ease-in-out, -moz-transform 0.3 ease-in-out;
-        transition: 0.3s ease-in-out, transform 0.3 ease-in-out;
-        background-size: cover;
-        border-radius: 0.3em;
-
-        div {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100%;
-          a {
-            text-decoration: none !important;
-            h4 {
-              color: $color5;
-              font-family: $fontfam1;
-              font-size: 20px;
-              font-weight: 400;
-              text-shadow: 0.5px 0.5px 5px $color1;
-              position: relative;
-              padding-bottom: 10px;
-            }
-
-            h4::after {
-              content: "";
-              width: 25px;
-              height: 5px;
-              background: $color13;
-              left: 0px;
-              right: 0px;
-              bottom: 0;
-              position: absolute;
-              border-radius: 50px;
-              margin: auto;
-            }
-          }
-          a :hover {
-            text-decoration: none !important;
-          }
-        }
-      }
-      div:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-}
-
-/* Función @each para definir el background de los 4 servicios más solicitados */
-
-@each $mainservices in plomeria, electricidad, pintura, albanileria {
-  .caja-img-#{$mainservices} {
-    border: 1.8px solid $color15;
-    background: $color8, url("../imagenes/#{$mainservices}.jpg");
-  }
-}
-
 // =========================
 /* INICIO - SECCIÓN 2 */
 // =========================
@@ -211,6 +122,101 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   strong {
     font-weight: 600;
   }
+}
+
+// =========================
+/* INICIO - COTIZADOR */
+// =========================
+.habitacionesRow {
+  color: $color5;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  padding-right: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-width: 130px;
+}
+
+.habitacionesTitulo {
+  font-family: $fontfam1;
+  font-weight: 400;
+}
+
+.selectoresHabitaciones {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 104px !important;
+  height: 32px !important;
+}
+
+.menosHabitaciones {
+  width: 32px !important;
+  height: 32px !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  border-width: 1.5px !important;
+  border-style: solid !important;
+  border-color: $color5 !important;
+  color: $color5 !important;
+  outline: none !important;
+  touch-action: manipulation !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: none !important;
+  border-radius: 50% !important;
+}
+
+.mehSpan {
+  height: 22px !important;
+  width: 22px !important;
+  padding: 5px !important;
+}
+
+.conteoHabitaciones {
+  position: relative;
+}
+
+.masHabitaciones {
+  width: 32px !important;
+  height: 32px !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  border-width: 1.5px !important;
+  border-style: solid !important;
+  border-color: $color5 !important;
+  color: $color5 !important;
+  outline: none !important;
+  touch-action: manipulation !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: none !important;
+  border-radius: 50% !important;
+}
+
+.mahSpan {
+  height: 22px !important;
+  width: 22px !important;
+  padding: 5px !important;
+}
+
+.desactivarBtn {
+  cursor: not-allowed !important;
+  border-color: $color15 !important;
+  color: $color15 !important;
 }
 
 // =========================
@@ -269,19 +275,6 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
     }
   }
 
-  .masSolicitados {
-    justify-content: space-between;
-
-    ul {
-      justify-content: space-between;
-      width: 100%;
-      li {
-        width: 240.5px;
-        margin: 0;
-      }
-    }
-  }
-
   // Sección 2 - Como funciona
   .comoFunciona-titulo h3 {
     font-size: $fontsizess-t;
@@ -332,48 +325,6 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
     }
   }
 
-  .portada-logo {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-  }
-
-  .profile-img-section {
-    position: relative;
-  }
-
-  .profile-info {
-    margin-bottom: 25px;
-  }
-
-  .profile-img {
-    height: 380px;
-    justify-content: right;
-    align-items: flex-end;
-    box-shadow: rgba(2, 11, 90, 0.25) 1.95px 1.95px 3.6px;
-  }
-
-  .profile-img-line {
-    background-color: $color3;
-    height: 4px;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    border-radius: 0.2em;
-  }
-
-  // Sección 1 - Más solicitados
-  .masSolicitados {
-    ul {
-      li {
-        width: 160.75px;
-      }
-    }
-  }
-
   // Sección 2 - Como funciona
   .comoFunciona-1p {
     font-size: $fontsizels + 28px;
@@ -395,15 +346,6 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
 
     div {
       padding-bottom: 0;
-    }
-  }
-
-  // Sección 1 - Más solicitados
-  .masSolicitados {
-    ul {
-      li {
-        width: 211.75px;
-      }
     }
   }
 
@@ -444,16 +386,6 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   .portada {
     h1 {
       font-size: $fontsizels + 50px;
-    }
-  }
-
-  // Sección 1 - Más solicitados
-  .masSolicitados {
-    ul {
-      li {
-        width: 288.75px;
-        height: 200px;
-      }
     }
   }
 

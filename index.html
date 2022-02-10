@@ -76,49 +76,6 @@
             </div>
         </div>
         <section class="main-background">
-
-            <section class="container-ya masSolicitados">
-                <h3 class="titulos"><span>Más
-                        <strong>solicitados</strong></span></h3>
-                <ul class="grid-masSolicitados">
-                    <li>
-                        <div class="caja-masSolicitados caja-img-plomeria">
-                            <div class="caja-info">
-                                <a href="contacto-id1.html">
-                                    <h4>Plomería</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="caja-masSolicitados caja-img-electricidad">
-                            <div class="caja-info">
-                                <a href="contacto-id2.html">
-                                    <h4>Electricidad</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="caja-masSolicitados caja-img-pintura">
-                            <div class="caja-info">
-                                <a href="contacto-id3.html">
-                                    <h4>Pintura</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="caja-masSolicitados caja-img-albanileria">
-                            <div class="caja-info">
-                                <a href="contacto-id4.html">
-                                    <h4>Albañilería</h4>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </section>
             <section class="section-two-portada">
                 <div class="container-ya contenedorComoFunciona-todo">
                     <div class="contenedorComoFunciona container-fluid">
@@ -163,41 +120,29 @@
                                     <input type="text" class="form-control" id="nombreCotizar" placeholder="Nombre(s)">
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="ubicacionCotizar">Ubicación</label>
-                                    <select id="ubicacionCotizar" class="form-control">
-                                        <option selected disabled>Seleccionar Ciudad</option>
-                                        <option>Cancún</option>
-                                        <option>Tulum</option>
-                                        <option>Playa del Carmen</option>
-                                        <option>Isla Mujeres</option>
-                                        <option>Mérida</option>
-                                    </select>
+                                    <label id="labelUbicacion" for="ubicacionCotizar">Ubicación</label>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="tipoHogarCotizar">Tipo de hogar</label>
-                                    <select id="tipoHogarCotizar" class="form-control" placeholder="Nombre(s)">
-                                        <option>Casa</option>
-                                        <option>Departamento</option>
-                                    </select>
+                                    <label id="labelTiposDeHogar" for="tipoHogarCotizar">Tipo de hogar</label>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="frequenciaCotizar">Frequencia de limpieza mensual</label>
-                                    <input type="number" value="1" class="form-control" id="frequenciaCotizar"
+                                    <label for="frequenciaCotizar"># Servicios mensuales</label>
+                                    <input type="number" value="0" class="form-control" id="frequenciaCotizar"
                                         placeholder="Frequencia de limpieza">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <label for="habitacionesCotizar">Habitaciones</label>
-                                    <input type="number" value="1" class="form-control" id="habitacionesCotizar">
+                                    <input type="number" value="0" class="form-control" id="habitacionesCotizar">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="banosCotizar">Baños</label>
-                                    <input type="number" value="1" class="form-control" id="banosCotizar">
+                                    <input type="number" value="0" class="form-control" id="banosCotizar">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="habitantesCotizar">Habitantes</label>
-                                    <input type="number" value="1" class="form-control" id="habitantesCotizar">
+                                    <input type="number" value="0" class="form-control" id="habitantesCotizar">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="mascotasCotizar">Mascotas</label>
@@ -205,54 +150,58 @@
                                 </div>
 
                                 <div class="form-group col-md-4 otrosEspaciosQuery">
-                                    <label for="otrosEspaciosForm">Selecciona que otros espacios desea limpiar</label>
+                                    <label for="otrosEspaciosForm">Selecciona que otros espacios desea
+                                        limpiar</label>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="ckOtros" type="checkbox" id="otros1"
-                                            value="cocina" />
+                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
+                                            id="otros1" value="cocina" />
                                         <label class="form-check-label" for="otros1">
                                             <p style="font-weight:200;">Cocina</p>
                                         </label>
                                     </div>
 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="ckOtros" type="checkbox" id="otros2"
-                                            value="comedor" />
+                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
+                                            id="otros2" value="comedor" />
                                         <label class="form-check-label" for="otros2">
                                             <p style="font-weight:200;">Comedor</p>
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="ckOtros" type="checkbox" id="otros3"
-                                            value="sala" />
+                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
+                                            id="otros3" value="sala" />
                                         <label class="form-check-label" for="otros3">
                                             <p style="font-weight:200;">Sala</p>
                                         </label>
                                     </div>
 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="ckOtros" type="checkbox" id="otros4"
-                                            value="oficina" />
+                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
+                                            id="otros4" value="oficina" />
                                         <label class="form-check-label" for="otros4">
                                             <p style="font-weight:200;">Oficina</p>
                                         </label>
                                     </div>
 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="ckOtros" type="checkbox" id="otros5"
-                                            value="cuarto de lavado" />
+                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
+                                            id="otros5" value="cuarto de lavado" />
                                         <label class="form-check-label" for="otros5">
                                             <p style="font-weight:200;">Cuarto de lavado</p>
                                         </label>
                                     </div>
-
                                 </div>
-
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <p class="preliminarTotalEstilo">Total: <span id="preliminarTotal">$0.00</span> MXN
+                                    </p>
+                                </div>
                             </div>
                         </form>
-                        <button id="btnCotizadorYLA" class="btn1">Cotizar</button>
-                        <button id="btnLimpiarYLA" class="btn3">Limpiar</button>
+                        <!--                         <button id="btnCotizadorYLA" class="btn1">Desglosar</button>
+ --> <button id="btnLimpiarYLA" class="btn3">Limpiar</button>
                         <button id="btnRecuperarYLA" class="btn5">Recuperar</button>
-
                         <div id="cotizador">
                         </div>
                     </div>
@@ -345,13 +294,11 @@
             </div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/wow.min.js">
         new WOW().init();
     </script>
     <script defer src="js/menu.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
@@ -365,7 +312,8 @@
     <script>
         Splitting();
     </script>
-    <script src="js/proyectofinalE2.js"></script>
+    <script src="js/desafioC12.js"></script>
+
 </body>
 
 </html>

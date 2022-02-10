@@ -8,32 +8,8 @@
 </head>
 
 <body>
-    <div id="root"></div>
-    <script>
-        const colors = ["Red", "Green", "Blue", "Yellow"];
-        colors.forEach((color) => {
-            //  generate id
-            const id = `color-${color}`;
-
-            // create a label
-            const label = document.createElement('label');
-            label.setAttribute("for", id);
-
-            // create a checkbox
-            const checkbox = document.createElement('input');
-            checkbox.type = "checkbox";
-            checkbox.name = "color";
-            checkbox.value = color;
-            checkbox.id = id;
-
-            // place the checkbox inside a label
-            label.appendChild(checkbox);
-            // create text node
-            label.appendChild(document.createTextNode(color));
-            // add the label to the root
-            document.querySelector("#root").appendChild(label);
-        });
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/pruebas.js"></script>
 </body>
 
 </html>
