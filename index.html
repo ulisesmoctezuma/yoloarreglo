@@ -127,30 +127,31 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="frequenciaCotizar"># Servicios mensuales</label>
-                                    <input type="number" value="0" class="form-control" id="frequenciaCotizar"
+                                    <input type="number" min="1" value="1" class="form-control" id="frequenciaCotizar"
                                         placeholder="Frequencia de limpieza">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <label for="habitacionesCotizar">Habitaciones</label>
-                                    <input type="number" value="0" class="form-control" id="habitacionesCotizar">
+                                    <input type="number" min="1" value="0" class="form-control"
+                                        id="habitacionesCotizar">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="banosCotizar">Baños</label>
-                                    <input type="number" value="0" class="form-control" id="banosCotizar">
+                                    <input type="number" min="1" value="0" class="form-control" id="banosCotizar">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="habitantesCotizar">Habitantes</label>
-                                    <input type="number" value="0" class="form-control" id="habitantesCotizar">
+                                    <input type="number" min="1" value="0" class="form-control" id="habitantesCotizar">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="mascotasCotizar">Mascotas</label>
-                                    <input type="number" value="0" class="form-control" id="mascotasCotizar">
+                                    <input type="number" min="0" value="0" class="form-control" id="mascotasCotizar">
                                 </div>
 
                                 <div class="form-group col-md-4 otrosEspaciosQuery">
-                                    <label for="otrosEspaciosForm">Selecciona que otros espacios desea
+                                    <label for="otrosEspaciosForm">Selecciona que otros espacios deseas
                                         limpiar</label>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
@@ -194,14 +195,14 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <p class="preliminarTotalEstilo">Total: <span id="preliminarTotal">$0.00</span> MXN
-                                    </p>
+                                    <div id="preliminarTotalEstilo">
+                                    </div>
                                 </div>
                             </div>
                         </form>
                         <!--                         <button id="btnCotizadorYLA" class="btn1">Desglosar</button>
  --> <button id="btnLimpiarYLA" class="btn3">Limpiar</button>
-                        <button id="btnRecuperarYLA" class="btn5">Recuperar</button>
+                        <button id="btnRecuperarYLA" class="btn5" style="display: none">Recuperar</button>
                         <div id="cotizador">
                         </div>
                     </div>
@@ -312,7 +313,7 @@
     <script>
         Splitting();
     </script>
-    <script src="js/desafioC12.js"></script>
+    <script src="js/desafioC13.js"></script>
 
 </body>
 

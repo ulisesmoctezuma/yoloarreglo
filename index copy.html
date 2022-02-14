@@ -1,15 +1,71 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Checkboxes</title>
+    <meta charset="utf-8">
+    <title>attr demo</title>
+    <style>
+        p {
+            margin: 20px 0 0;
+        }
+
+        b {
+            color: blue;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/pruebas.js"></script>
+
+    <input id="check1" class="checkPrueba" type="checkbox" checked="checked">
+    <input id="check2" class="checkPrueba" type="checkbox" checked="checked">
+    <input id="check3" class="checkPrueba" type="checkbox" checked="checked">
+
+
+    <label for="check1">Check me</label>
+    <label for="check2">Check me too</label>
+
+    <p></p>
+
+    <script>
+        /*         const tiposDeHogar = ["Casa", "Departamento"];
+                let opcionTiposHogar = '';
+                tiposDeHogar.forEach((tipoDeHogar) => opcionTiposHogar += `<option value='${tipoDeHogar}'>${tipoDeHogar}</option>`)
+                $(`<select id="tipoHogarCotizar" class="form-control">${opcionTiposHogar}</select>`).insertAfter('#labelTiposDeHogar'); */
+
+
+
+
+
+        $("input").change(function () {
+
+                const arrayPrueba = [];
+
+                $(".checkPrueba").each(function () {
+                    arrayPrueba.push($(this).prop("checked"));
+                });
+                console.log(arrayPrueba);
+
+
+                var valor = $("#check1");
+                $("p").html(
+                    ".prop( 'checked' ): <b>" + valor.prop("checked") + "</b><br>" +
+                    ".is( ':checked' ): <b>" + valor.is(":checked") + "</b>");
+            })
+            .change();
+
+
+        $("body").prepend('<button id="btn1">Mostrar</button>');
+        $("body").prepend(`<div id="div1"  style="height: 120px; display:none">
+                        <h3>¡Hola Coder!</h3>
+                        <h4>Sorpresa 2</h4>
+                    </div>`);
+        //Usamos slideDown sobre div1 en respuesta al click del boton btn1
+        $("#btn1").click(() => {
+            $("#div1").toggle("slow");
+        });
+    </script>
+
 </body>
 
 </html>

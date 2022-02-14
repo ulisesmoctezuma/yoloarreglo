@@ -17,6 +17,8 @@ $(document).ready(function () {
     tiposDeHogar.forEach((tipoDeHogar) => opcionTiposHogar += `<option value='${tipoDeHogar}'>${tipoDeHogar}</option>`)
     $(`<select id="tipoHogarCotizar" class="form-control">${opcionTiposHogar}</select>`).insertAfter('#labelTiposDeHogar');
 
+    // HTML PARA TOTAL PRELIMINAR
+    $("#preliminarTotalEstilo").append(`<span id="plt" style="display: none"></span>`);
 
     function activarCotizador() {
         class Hogar {
@@ -48,11 +50,11 @@ $(document).ready(function () {
                 let precioOtrosEspacios = [];
                 for (let precioOtroEspacio of this.otrosEspaciosLimp) {
                     if (tipo == "Departamento") {
-                        precioOtroEspacio.nombreEspacio = precioOtroEspacio.nomEspacios;
+                        precioOtroEspacio.nomEspacio = precioOtroEspacio.nomEspacio;
                         precioOtroEspacio.precioEspacio = precioOtroEspacio.precioEspacio * 1.12;
                         precioOtrosEspacios.push(precioOtroEspacio);
                     } else {
-                        precioOtroEspacio.nombreEspacio = precioOtroEspacio.nomEspacios;
+                        precioOtroEspacio.nomEspacio = precioOtroEspacio.nomEspacio;
                         precioOtroEspacio.precioEspacio = precioOtroEspacio.precioEspacio;
                         precioOtrosEspacios.push(precioOtroEspacio);
                     }
@@ -102,7 +104,13 @@ $(document).ready(function () {
 
                 let totalCotizacion = (totalxOcasion * this.frequenciaLimpieza);
 
-                document.getElementById("preliminarTotal").innerHTML = `<span id="plt">${aMoneda.format(totalCotizacion)} Hellou</span>`;
+                // Mostrar total preliminar y botón recuperarDatos
+                $("#plt").fadeIn("slow", function () {
+                    $("#plt").text(`Total: ${aMoneda.format(totalCotizacion)} MXN IVA Incluido.`);
+                    $("#btnRecuperarYLA").slideDown("slow");
+                });
+
+
 
 
                 /*                 document.getElementById("cotizador").innerHTML =
@@ -228,13 +236,21 @@ $(document).ready(function () {
         sessionStorage.setItem("mascotas", mascotasJSON);
 
         const arrayEspaciosLimp = [];
-
         $("input:checkbox[name=ckOtros]:checked").each(function () {
             arrayEspaciosLimp.push($(this).val());
         });
+        const arrayEspaciosLimpJSON = JSON.stringify(arrayEspaciosLimp);
+        sessionStorage.setItem("arrayEspaciosLimp", arrayEspaciosLimpJSON);
+
+        const arrayOtrosEspaciosSS = [];
+        $(".otrosLugares").each(function () {
+            arrayOtrosEspaciosSS.push($(this).prop("checked"));
+        });
+        const arrayOtrosEspaciosSSJSON = JSON.stringify(arrayOtrosEspaciosSS);
+        sessionStorage.setItem("arrayOtrosEspaciosSS", arrayOtrosEspaciosSSJSON);
+        console.log(arrayOtrosEspaciosSS);
 
         const otrosEspaciosLimp = [];
-
         for (let espacio of arrayEspaciosLimp) {
             if (espacio == "cocina") {
                 nombreEsp = "cocina";
@@ -254,7 +270,7 @@ $(document).ready(function () {
                 nombreEsp = "sala";
                 precioEsp = 55;
                 otrosEspaciosLimp.push({
-                    precioEsp: nombreEsp,
+                    nomEspacio: nombreEsp,
                     precioEspacio: precioEsp
                 });
             } else if (espacio == "oficina") {
@@ -275,6 +291,8 @@ $(document).ready(function () {
         }
 
         console.log(otrosEspaciosLimp);
+        console.log(arrayEspaciosLimp);
+
         const otrosEspaciosLimpiar = otrosEspaciosLimp.join(", "); // Devuelve array con espacio para que se muestre claramente en el promt
         const hogar = new Hogar(nombre, tipo, habitaciones, banos, otrosEspaciosLimpiar, habitantes, mascotas, frequenciaLimpieza);
         hogar.cotizarLimpieza();
@@ -290,61 +308,30 @@ $(document).ready(function () {
             document.getElementById("banosCotizar").value = JSON.parse(sessionStorage.getItem("banos"));
             document.getElementById("habitantesCotizar").value = JSON.parse(sessionStorage.getItem("habitantes"));
             document.getElementById("mascotasCotizar").value = JSON.parse(sessionStorage.getItem("mascotas"));
+            $(".otrosLugares").each(function (index) {
+                $(this).prop("checked", JSON.parse(sessionStorage.getItem("arrayOtrosEspaciosSS"))[index]);
+            })
+            activarCotizador();
         }
 
         btnRecuperar.addEventListener("click", recuperarDatos);
-
     }
 
     function limpiarCotizador() {
         document.getElementById("formulario-yla").reset();
-        let limpiarTabla = document.getElementById('tablaCotizacion');
-        limpiarTabla.parentNode.removeChild(limpiarTabla);
+        /*         let limpiarTabla = document.getElementById('tablaCotizacion');
+                limpiarTabla.parentNode.removeChild(limpiarTabla); */
+        $("#plt").fadeOut("slow", function () {
+            $("#plt").empty();
+        });
+
+
     }
 
-    $("#frequenciaCotizar, #habitacionesCotizar, #banosCotizar, #habitantesCotizar, #mascotasCotizar, #otros1, #otros2, .otros3, .otros4, .otros5 ").change(function () {
+    $("#frequenciaCotizar, #habitacionesCotizar, #banosCotizar, #habitantesCotizar, #mascotasCotizar, #otros1, #otros2, #otros3, #otros4, #otros5 ").change(function () {
         activarCotizador();
     });
 
-    /*     document.getElementById('frequenciaCotizar').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('habitacionesCotizar').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('banosCotizar').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('habitantesCotizar').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('mascotasCotizar').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('otros1').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('otros2').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('otros3').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('otros4').onchange = (e) => {
-            activarCotizador();
-        }
-
-        document.getElementById('otros5').onchange = (e) => {
-            activarCotizador();
-        } */
 
     btnLimpiar.addEventListener("click", limpiarCotizador);
 })
