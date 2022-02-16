@@ -18,7 +18,13 @@ $(document).ready(function () {
     $(`<select id="tipoHogarCotizar" class="form-control">${opcionTiposHogar}</select>`).insertAfter('#labelTiposDeHogar');
 
     // HTML PARA TOTAL PRELIMINAR
-    $("#preliminarTotalEstilo").append(`<span id="plt" style="display: none"></span>`);
+    $("#preliminarTotalEstilo").append(`<span id="contenedorTtlPreliminar" style="display: none""><div id="tituloTotalPreliminar">Total:</div>
+                                        <span id="plt"></span><span id="monedaSeleccionada" style="color: white"></span><br>
+                                        <label class="switch">
+                                            <input id="toggleMXNtoUSD" type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                        <img id="BanderasMXNnUSD"><span id="convertirA"></span></span>`);
 
     function activarCotizador() {
         class Hogar {
@@ -103,98 +109,43 @@ $(document).ready(function () {
                 let totalCotizacion = (totalxOcasion * this.frequenciaLimpieza);
 
                 // Mostrar total preliminar y botón recuperarDatos
-                $("#plt").fadeIn("slow", function () {
-                    $("#plt").text(`Total: ${aMoneda.format(totalCotizacion)} MXN IVA Incluido.`);
+                $("#contenedorTtlPreliminar").fadeIn("slow", function () {
+                    $("#plt").text(`${aMoneda.format(totalCotizacion)}`);
                     $("#btnRecuperarYLA").slideDown("slow");
                 });
 
+                // Convertir tipo de moneda
+                let monedaSeleccionada = '';
+                let convertirA = '';
+                if ($("#toggleMXNtoUSD").prop("checked") == false) {
+                    monedaSeleccionada = "MXN";
+                    convertirA = "Convertir a USD."
+                    $("#BanderasMXNnUSD").attr("src", "imagenes/MXN.png");
+                } else if ($("#toggleMXNtoUSD").prop("checked") == true) {
+                    monedaSeleccionada = "USD";
+                    convertirA = "Convertir a MXN."
+                    $("#BanderasMXNnUSD").attr("src", "imagenes/USD.png");
+                    // Convertir a dolares
+                    let URL = `https://v6.exchangerate-api.com/v6/78ebf190f1e57d5cf73fea9e/latest/MXN`
+                    let montoAConvertir = totalCotizacion;
+                    $.ajax({
+                        type: 'GET',
+                        url: URL,
+                        success: (response) => {
+                            let tipo = response.conversion_rates["USD"];
+                            let resultadoConvertir = montoAConvertir * tipo;
+                            $("#plt").text(`${aMoneda.format(resultadoConvertir)}`);
+                        },
+                        error: () => {
+                            $("#convertirA").text(`Error al procesar la solicitud. Intenta nuevamente.`);
+                        }
+                    });
+
+                }
+                $("#monedaSeleccionada").text(` ${monedaSeleccionada} (IVA Incluido).`);
+                $("#convertirA").text(`${convertirA}`);
 
 
-
-                /*                 document.getElementById("cotizador").innerHTML =
-                                    `<div id="tablaCotizacion"><h2 style="margin-bottom: 50px !important; margin-top: 50px !important; ">Cotización de limpieza residencial</h2>
-                                                        <h4>Cliente:</h4>
-                                                        <p id="nombre-cliente">${nombre}</p><br>
-                                                        <p style="margin-bottom: 20px !important;"> A continuación se desglosa la cotización solicitada para la limpieza de tu <strong>${tipo.toLowerCase()}</strong> ${frequenciaLimpieza} veces al mes.</p>
-                                                        <table class="table table-striped text-white">
-                                                                    <thead>
-                                                                        <tr style="color: #f5d104;">
-                                                                            <th scope="col">Concepto</th>
-                                                                            <th scope="col">Precio unitario</th>
-                                                                            <th scope="col">Cantidad</th>
-                                                                            <th scope="col">Precio total</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody id="bodyCotizador";>
-                                                                    <tr>
-                                                                        <th scope="row">Limpieza de habitaciones</th>
-                                                                        <td>${aMoneda.format(precioHabitacion)}</td>
-                                                                        <td>${this.habitaciones}</td>
-                                                                        <td>${aMoneda.format(subtotalHabitaciones)}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Limpieza de baños</th>
-                                                                        <td>${aMoneda.format(precioBanos)}</td>
-                                                                        <td>${this.banos}</td>
-                                                                        <td>${aMoneda.format(subtotalBanos)}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Cargo por habitantes</th>
-                                                                        <td>${aMoneda.format(precioXhabitantes)}</td>
-                                                                        <td>${this.habitantes}</td>
-                                                                        <td>${aMoneda.format(subtotalHabitantes)}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Cargo por mascotas</th>
-                                                                        <td>${aMoneda.format(precioXmascotas)}</td>
-                                                                        <td>${this.mascotas}</td>
-                                                                        <td>${aMoneda.format(subtotalMascotas)}</td>
-                                                                </tr>
-                                                                </tbody>
-                                                                </table>
-                                                        </div>`; */
-
-                /* 
-                                for (let otrosEspacios of precioOtrosEspacios) {
-                                    let filasOtrosEspacios = document.createElement("tr");
-                                    filasOtrosEspacios.innerHTML =
-                                        `<th scope="row">Limpieza de ${otrosEspacios.nomEspacio}</th>
-                                                    <td>${aMoneda.format(otrosEspacios.precioEspacio)}</td>
-                                                    <td>1</td>
-                                                    <td>${aMoneda.format(otrosEspacios.precioEspacio)}</td>
-                                                    `;
-                                    document.getElementById('bodyCotizador').appendChild(filasOtrosEspacios);
-                                } */
-
-                /*                 let filaSubtotaleCotizador = document.createElement("tr");
-                                filaSubtotaleCotizador.innerHTML =
-                                    `<th scope="row" colspan="3" style="text-align: right">Subtotal</th>
-                                                <td>${aMoneda.format(subtotal)}</td>`
-                                document.getElementById('bodyCotizador').appendChild(filaSubtotaleCotizador);
-
-                                let filaIVACotizador = document.createElement("tr");
-                                filaIVACotizador.innerHTML =
-                                    `<th scope="row" colspan="3" style="text-align: right">IVA 16%</th>
-                                                <td>${aMoneda.format(iva)}</td>`
-                                document.getElementById('bodyCotizador').appendChild(filaIVACotizador);
-
-                                let filaTotalOcasion = document.createElement("tr");
-                                filaTotalOcasion.innerHTML =
-                                    `<th scope="row" colspan="3" style="text-align: right">Total por ocasión</th>
-                                                <td>${aMoneda.format(totalxOcasion)}</td>`
-                                document.getElementById('bodyCotizador').appendChild(filaTotalOcasion);
-
-                                let filaFrequencia = document.createElement("tr");
-                                filaFrequencia.innerHTML =
-                                    `<th scope="row" colspan="3" style="text-align: right">Frequencia mensual</th>
-                                                <td>${this.frequenciaLimpieza}</td>`
-                                document.getElementById('bodyCotizador').appendChild(filaFrequencia);
-
-                                let filaTotal = document.createElement("tr");
-                                filaTotal.innerHTML =
-                                    `<th scope="row" colspan="3" style="text-align: right">Total mensual</th>
-                                                <td>${aMoneda.format(totalCotizacion)}</td>`
-                                document.getElementById('bodyCotizador').appendChild(filaTotal); */
             }
 
         }
@@ -319,14 +270,12 @@ $(document).ready(function () {
         document.getElementById("formulario-yla").reset();
         /*         let limpiarTabla = document.getElementById('tablaCotizacion');
                 limpiarTabla.parentNode.removeChild(limpiarTabla); */
-        $("#plt").fadeOut("slow", function () {
+        $("#contenedorTtlPreliminar").fadeOut("slow", function () {
             $("#plt").empty();
         });
-
-
     }
 
-    $("#frequenciaCotizar, #habitacionesCotizar, #banosCotizar, #habitantesCotizar, #mascotasCotizar, #otros1, #otros2, #otros3, #otros4, #otros5 ").change(function () {
+    $("#frequenciaCotizar, #habitacionesCotizar, #banosCotizar, #habitantesCotizar, #mascotasCotizar, #otros1, #otros2, #otros3, #otros4, #otros5, #toggleMXNtoUSD").change(function () {
         activarCotizador();
     });
 

@@ -156,7 +156,7 @@ $('.masHabitaciones').on('click', () => {
 })
 
 
-HTML BOTON AIRBNB
+//HTML BOTON AIRBNB
 
 /*     <
     div class = "habitacionesRow" >
