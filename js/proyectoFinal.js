@@ -5,17 +5,64 @@ $(document).ready(function () {
 
     // HTML OPCIONES PARA ELEGIR CIUDAD
 
-    const ubicaciones = ["Cancún", "Tulum", "Playa del Carmen", "Isla Mujeres", "Mérida"];
+    const ubicaciones = ["Cancún", "Tulum", "Playa del Carmen", "Isla Mujeres", "Mérida", "Cozumel"];
     let opcionUbicacion = '';
     ubicaciones.forEach((ubicacion, index) => opcionUbicacion += `<option value='${index}'>${ubicacion}</option>`)
-    $(`<select id="ubicacionCotizar" class="form-control">${opcionUbicacion}</select>`).insertAfter('#labelUbicacion');
+    $(`<select id="ubicacionCotizar" class="form-control form-cotizar">${opcionUbicacion}</select>`).insertAfter('#labelUbicacion');
 
     // HTML OPCIONES PARA ELEGIR TIPO DE HOGAR
 
     const tiposDeHogar = ["Casa", "Departamento"];
     let opcionTiposHogar = '';
     tiposDeHogar.forEach((tipoDeHogar) => opcionTiposHogar += `<option value='${tipoDeHogar}'>${tipoDeHogar}</option>`)
-    $(`<select id="tipoHogarCotizar" class="form-control">${opcionTiposHogar}</select>`).insertAfter('#labelTiposDeHogar');
+    $(`<select id="tipoHogarCotizar" class="form-control form-cotizar">${opcionTiposHogar}</select>`).insertAfter('#labelTiposDeHogar');
+
+    // HTML BOTÓN ESPACIOS
+
+    const htmlEspacios = [{
+        clase: 'habitaciones',
+        titulo: 'Habitaciones'
+    }, {
+        clase: 'banos',
+        titulo: 'Baños'
+    }, {
+        clase: 'habitantes',
+        titulo: 'Habitantes'
+    }, {
+        clase: 'mascotas',
+        titulo: 'Mascotas'
+    }];
+    let htmlEspacioContenedor = '';
+    htmlEspacios.forEach((htmlEspacio) => htmlEspacioContenedor +=
+        `<div class="espaciosRow form-group col-lg-3 col-md-6 col-sm-12">
+        <div class="espaciosTitulo">${htmlEspacio.titulo}</div>
+        <div class="selectoresEspacios">
+            <button class="menosEspacios ${htmlEspacio.clase}Click desactivarBtn" data-btn="${htmlEspacio.clase}" type="button">
+                <span class="me${htmlEspacio.clase}Span">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" role="presentation" focusable="false"
+                        style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                        <path d="m2 16h28"></path>
+                    </svg>
+                </span>
+            </button>
+            <div class="conteo${htmlEspacio.clase}">0</div>
+            <button class="masEspacios" data-btn="${htmlEspacio.clase}" type="button">
+                <span class="ma${htmlEspacio.clase}Span">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true" role="presentation" focusable="false"
+                        style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                        <path d="m2 16h28m-14-14v28"></path>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+    `)
+
+    $(".pruebaCrearhtml").append(`${htmlEspacioContenedor}`);
+
+    console.log(htmlEspacios);
 
     // HTML PARA TOTAL PRELIMINAR
     $("#preliminarTotalEstilo").append(`<span id="contenedorTtlPreliminar" style="display: none""><div id="tituloTotalPreliminar">Total:</div>
@@ -108,19 +155,17 @@ $(document).ready(function () {
                 // Calcular total
                 let totalCotizacion = (totalxOcasion * this.frequenciaLimpieza);
 
-                // Mostrar total preliminar y botón recuperarDatos
-                $("#contenedorTtlPreliminar").fadeIn("slow", function () {
-                    $("#plt").text(`hiiiii${aMoneda.format(totalCotizacion)}`);
-                    $("#btnRecuperarYLA").slideDown("slow");
-                });
-
                 // Convertir tipo de moneda
                 let monedaSeleccionada = '';
                 let convertirA = '';
+                let montoConvertido = '';
                 if ($("#toggleMXNtoUSD").prop("checked") == false) {
                     monedaSeleccionada = "MXN";
                     convertirA = "Convertir a USD."
+                    montoConvertido = totalCotizacion;
+                    $("#plt").text(`${aMoneda.format(montoConvertido)}`);
                     $("#BanderasMXNnUSD").attr("src", "imagenes/MXN.png");
+                    console.log(aMoneda.format(montoConvertido));
                 } else if ($("#toggleMXNtoUSD").prop("checked") == true) {
                     monedaSeleccionada = "USD";
                     convertirA = "Convertir a MXN."
@@ -133,20 +178,25 @@ $(document).ready(function () {
                         url: URL,
                         success: (response) => {
                             let tipo = response.conversion_rates["USD"];
-                            let resultadoConvertir = montoAConvertir * tipo;
-                            $("#plt").text(`${aMoneda.format(resultadoConvertir)}`);
+                            montoConvertido = montoAConvertir * tipo;
+                            $("#plt").text(`${aMoneda.format(montoConvertido)}`);
+                            console.log(aMoneda.format(montoConvertido));
                         },
                         error: () => {
                             $("#convertirA").text(`Error al procesar la solicitud. Intenta nuevamente.`);
                         }
                     });
-
                 }
+
+                // Mostrar total preliminar y botón recuperarDatos
+                $("#contenedorTtlPreliminar").fadeIn("slow", function () {
+                    $("#btnRecuperarYLA").slideDown("slow");
+                });
+
                 $("#monedaSeleccionada").text(` ${monedaSeleccionada} (IVA Incluido).`);
                 $("#convertirA").text(`${convertirA}`);
-
-
             }
+
 
         }
 
@@ -168,19 +218,23 @@ $(document).ready(function () {
         let frequenciaLimpiezaJSON = JSON.stringify(frequenciaLimpieza);
         sessionStorage.setItem("frequenciaLimpieza", frequenciaLimpiezaJSON);
 
-        let habitaciones = document.getElementById("habitacionesCotizar").value;
+        let habitaciones = parseInt($(".conteohabitaciones").text());
+        /* document.getElementById("habitacionesCotizar").value; */
         let habitacionesJSON = JSON.stringify(habitaciones);
         sessionStorage.setItem("habitaciones", habitacionesJSON);
 
-        let banos = document.getElementById("banosCotizar").value;
+        let banos = parseInt($(".conteobanos").text());
+        /* let banos = document.getElementById("banosCotizar").value; */
         let banosJSON = JSON.stringify(banos);
         sessionStorage.setItem("banos", banosJSON);
 
-        let habitantes = document.getElementById("habitantesCotizar").value;
+        let habitantes = parseInt($(".conteohabitantes").text());
+        /* let habitantes = document.getElementById("habitantesCotizar").value; */
         let habitantesJSON = JSON.stringify(habitantes);
         sessionStorage.setItem("habitantes", habitantesJSON);
 
-        let mascotas = document.getElementById("mascotasCotizar").value;
+        let mascotas = parseInt($(".conteomascotas").text());
+        /*  let mascotas = document.getElementById("mascotasCotizar").value; */
         let mascotasJSON = JSON.stringify(mascotas);
         sessionStorage.setItem("mascotas", mascotasJSON);
 
@@ -246,39 +300,178 @@ $(document).ready(function () {
         const hogar = new Hogar(nombre, tipo, habitaciones, banos, otrosEspaciosLimpiar, habitantes, mascotas, frequenciaLimpieza);
         hogar.cotizarLimpieza();
 
-        const btnRecuperar = document.getElementById('btnRecuperarYLA');
-
         function recuperarDatos() {
             document.getElementById("nombreCotizar").value = JSON.parse(sessionStorage.getItem("nombre"));
             document.getElementById("ubicacionCotizar").value = JSON.parse(sessionStorage.getItem("ubicacion"));
             document.getElementById("tipoHogarCotizar").value = JSON.parse(sessionStorage.getItem("tipo"));
             document.getElementById("frequenciaCotizar").value = JSON.parse(sessionStorage.getItem("frequenciaLimpieza"));
-            document.getElementById("habitacionesCotizar").value = JSON.parse(sessionStorage.getItem("habitaciones"));
-            document.getElementById("banosCotizar").value = JSON.parse(sessionStorage.getItem("banos"));
-            document.getElementById("habitantesCotizar").value = JSON.parse(sessionStorage.getItem("habitantes"));
-            document.getElementById("mascotasCotizar").value = JSON.parse(sessionStorage.getItem("mascotas"));
+            /* document.getElementById("habitacionesCotizar").value */
+            $(".conteohabitaciones").html(JSON.parse(sessionStorage.getItem("habitaciones")));
+            $(".conteobanos").html(JSON.parse(sessionStorage.getItem("banos")));
+            $(".conteohabitantes").html(JSON.parse(sessionStorage.getItem("habitantes")));
+            $(".conteomascotas").html(JSON.parse(sessionStorage.getItem("mascotas")));
             $(".otrosLugares").each(function (index) {
                 $(this).prop("checked", JSON.parse(sessionStorage.getItem("arrayOtrosEspaciosSS"))[index]);
             })
             activarCotizador();
+
+            $(".otrosLugares").each(function (i) {
+                if ($(this).is(':checked')) {
+                    $(`.imgs-${i}`).show();
+                    $(`.imgu-${i}`).hide();
+                } else {
+                    $(`.imgs-${i}`).hide();
+                    $(`.imgu-${i}`).show();
+                }
+            })
+
         }
 
+        const btnRecuperar = document.getElementById('btnRecuperarYLA');
         btnRecuperar.addEventListener("click", recuperarDatos);
     }
 
     function limpiarCotizador() {
         document.getElementById("formulario-yla").reset();
-        /*         let limpiarTabla = document.getElementById('tablaCotizacion');
-                limpiarTabla.parentNode.removeChild(limpiarTabla); */
+        /* let limpiarTabla = document.getElementById('tablaCotizacion');
+        limpiarTabla.parentNode.removeChild(limpiarTabla); */
         $("#contenedorTtlPreliminar").fadeOut("slow", function () {
             $("#plt").empty();
         });
+        $(".img-selected").hide()
+        $(".img-unselected").show()
     }
 
     $("#frequenciaCotizar, #habitacionesCotizar, #banosCotizar, #habitantesCotizar, #mascotasCotizar, #otros1, #otros2, #otros3, #otros4, #otros5, #toggleMXNtoUSD").change(function () {
         activarCotizador();
     });
 
+    // Toggle iconos otros espacios a limpiar
+
+    $(".otrosLugares").on('click', function (event) {
+        let chkId = event.target.dataset.chk;
+        if ($(`.ol-${chkId}`).is(':checked')) {
+            $(`.img-${chkId}-sel`).show();
+            $(`.img-${chkId}`).hide()
+        } else {
+            $(`.img-${chkId}-sel`).hide()
+            $(`.img-${chkId}`).show()
+        }
+    })
+
+
+    /*     $(".otrosLugares").on('click', function (event) {
+            let chkId = event.target.dataset.chk;
+            $(`.img-${chkId}-sel`).toggle();
+            $(`.img-${chkId}`).toggle();
+        })
+     */
+
+
+    // CAMBIO DE ICON AL SELECCIONAR
+    /*     $(".otrosLugares").forEach((img,index) => {
+            if ($('.otrosLugares').is(':checked')) {
+                $(`.img-${chkId}`).attr("src", `imagenes/icon-${chkId}-sel.png`).fadeIn(2000);
+                console.log(`it works ${chkId}`);
+            } else if ($('.otrosLugares').not(':checked')) {
+                $(`.img-${chkId}`).attr("src", `imagenes/icon-${chkId}.png`).fadeIn(2000);
+                console.log(`it workssss ${chkId}`);
+            }
+        }) */
+
+    /*     $(".otrosLugares").on('click', (event) => {
+            let chkId = event.target.dataset.chk;
+            if ($('.otrosLugares').prop("checked") === false) {
+                console.log(`it is not checked ${chkId}`);
+            } else if ($('.otrosLugares').prop("checked") === true) {
+                console.log(`it is checked ${chkId}`);
+            }
+        })
+     */
+
+    /*     $('.otrosLugares').change((event) => {
+            let chkId = event.currentTarget.dataset.chk;
+            if ($('.otrosLugares').prop("checked") == true) {
+                $(`.img-${chkId}`).attr("src", `imagenes/icon-${chkId}-sel.png`).fadeIn(2000);
+                console.log(`it is checked ${chkId}`);
+            } else if ($('.otrosLugares').prop("checked") == false) {
+                $(`.img-${chkId}`).attr("src", `imagenes/icon-${chkId}.png`).fadeIn(2000);
+                console.log(`it is not checked ${chkId}`);
+            }
+        }) */
+    /* 
+        $(".otrosLugares").each(function () {
+            arrayOtrosEspaciosSS.push($(this).prop("checked"));
+        }); */
+
+
+
+    /*     $('input:checkbox[name="ckOtros"]').on('click', function () {
+            if ($(this).is(':checked')) {
+                //$(this).prop('checked',false);
+                let chkId = event.currentTarget.dataset.chk;
+                console.log("its cheked");
+            } else {
+                //$(this).prop('checked',true);
+                console.log("it works, it is not checked");
+            }
+        }) */
+
+
+
+
+    // BOTON TIPO AIRBNB
+
+    $(".menosEspacios").on('click', (event) => {
+        let btnId = event.currentTarget.dataset.btn;
+        console.log(btnId);
+        if (parseInt($(`.${btnId}Click`).next().text()) == 0) {
+            $(`.${btnId}Click`).addClass('desactivarBtn');
+        }
+    })
+
+    $(".masEspacios").on('click', (event) => {
+        let btnId = event.currentTarget.dataset.btn;
+        if (parseInt($(`.${btnId}Click`).next().text()) >= 1) {
+            $(`.${btnId}Click`).removeClass('desactivarBtn');
+        }
+    })
+
+    /*     $('.masHabitaciones').on('click', () => {
+            if (parseInt($('.chSpan').text()) < 15) {
+                $(".chSpan").text(parseInt($('.chSpan').text()) + 1);
+            }
+        }) */
+
+    $('.menosHabitaciones').on('click', () => {
+        if (parseInt($('.chSpan').text()) >= 1) {
+            $(".chSpan").text(parseInt($('.chSpan').text()) - 1);
+        }
+    })
+
+    if (parseFloat($('.chSpan').text()) == 0) {
+        $('.menosHabitaciones').toggleClass('desactivarBtn');
+    }
+
+    $('.masHabitaciones').on('click', () => {
+        if (parseInt($('.chSpan').text()) >= 1) {
+            $('.menosHabitaciones').removeClass('desactivarBtn');
+        }
+    })
+
+    $('.menosHabitaciones').on('click', () => {
+        if (parseInt($('.chSpan').text()) == 0) {
+            $('.menosHabitaciones').addClass('desactivarBtn');
+        }
+    })
+
+    $('.menosHabitaciones').on('click', () => {
+        valSpan = parseInt($('.chSpan').text());
+    })
+
+    $('.masHabitaciones').on('click', () => {
+        valSpan = parseInt($('.chSpan').text());
+    })
 
     btnLimpiar.addEventListener("click", limpiarCotizador);
 })

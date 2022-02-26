@@ -114,85 +114,107 @@
                     <div id="cotizador-yla-portada">
                         <form id="formulario-yla">
                             <h3 class="titulos2"><span> <strong>Cotizador</strong></span></h3>
-                            <div class="form-row">
-                                <div class="form-group col-md-3">
+                            <div class="form-row pruebaCrearhtml">
+                                <div class="form-group col-lg-3 col-md-6 col-sm-12">
                                     <label for="nombreCotizar">Nombre(s)</label>
-                                    <input type="text" class="form-control" id="nombreCotizar" placeholder="Nombre(s)">
+                                    <input type="text" class="form-control form-cotizar" id="nombreCotizar"
+                                        placeholder="Nombre(s)">
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-lg-3 col-md-6 col-sm-12">
                                     <label id="labelUbicacion" for="ubicacionCotizar">Ubicación</label>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-lg-3 col-md-6 col-sm-12">
                                     <label id="labelTiposDeHogar" for="tipoHogarCotizar">Tipo de hogar</label>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-lg-3 col-md-6 col-sm-12">
                                     <label for="frequenciaCotizar"># Servicios mensuales</label>
-                                    <input type="number" min="1" value="1" class="form-control" id="frequenciaCotizar"
-                                        placeholder="Frequencia de limpieza">
+                                    <input type="number" min="1" value="1" class="form-control form-cotizar"
+                                        id="frequenciaCotizar" placeholder="Frequencia de limpieza">
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <label for="habitacionesCotizar">Habitaciones</label>
-                                    <input type="number" min="1" value="0" class="form-control"
-                                        id="habitacionesCotizar">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="banosCotizar">Baños</label>
-                                    <input type="number" min="1" value="0" class="form-control" id="banosCotizar">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="habitantesCotizar">Habitantes</label>
-                                    <input type="number" min="1" value="0" class="form-control" id="habitantesCotizar">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="mascotasCotizar">Mascotas</label>
-                                    <input type="number" min="0" value="0" class="form-control" id="mascotasCotizar">
-                                </div>
 
-                                <div class="form-group col-md-4 otrosEspaciosQuery">
-                                    <label for="otrosEspaciosForm">Selecciona que otros espacios deseas
-                                        limpiar</label>
+                            <div class="form-row">
+                                <label for="otrosEspaciosForm" style="font-weight: 600;">
+                                    Otros espacios a limpiar</label><br>
+                                <div class="form-group col-sm-12 otrosEspaciosQuery">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
-                                            id="otros1" value="cocina" />
+                                        <input class="form-check-input otrosLugares ol-cocina" data-chk="cocina"
+                                            name="ckOtros" type="checkbox" id="otros1" value="cocina" />
                                         <label class="form-check-label" for="otros1">
                                             <p style="font-weight:200;">Cocina</p>
                                         </label>
+                                        <div class="img-cocina img-unselected imgu-0">
+                                            <img src="imagenes/icon-cocina.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
+                                        <div class="img-cocina-sel img-selected imgs-0">
+                                            <img src="imagenes/icon-cocina-sel.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
                                     </div>
-
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
-                                            id="otros2" value="comedor" />
+                                        <input class="form-check-input otrosLugares ol-comedor" data-chk="comedor"
+                                            name="ckOtros" type="checkbox" id="otros2" value="comedor" />
                                         <label class="form-check-label" for="otros2">
                                             <p style="font-weight:200;">Comedor</p>
                                         </label>
+                                        <div class="img-comedor img-unselected imgu-1">
+                                            <img src="imagenes/icon-comedor.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
+                                        <div class="img-comedor-sel img-selected imgs-1">
+                                            <img src="imagenes/icon-comedor-sel.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
-                                            id="otros3" value="sala" />
+                                        <input class="form-check-input otrosLugares ol-sala" data-chk="sala"
+                                            name="ckOtros" type="checkbox" id="otros3" value="sala" />
                                         <label class="form-check-label" for="otros3">
                                             <p style="font-weight:200;">Sala</p>
                                         </label>
+                                        <div class="img-sala img-unselected imgu-2">
+                                            <img src="imagenes/icon-sala.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
+                                        <div class="img-sala-sel img-selected imgs-2">
+                                            <img src="imagenes/icon-sala-sel.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
                                     </div>
-
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
-                                            id="otros4" value="oficina" />
+                                        <input class="form-check-input otrosLugares ol-oficina" data-chk="oficina"
+                                            name="ckOtros" type="checkbox" id="otros4" value="oficina" />
                                         <label class="form-check-label" for="otros4">
                                             <p style="font-weight:200;">Oficina</p>
                                         </label>
+                                        <div class="img-oficina img-unselected imgu-3">
+                                            <img src="imagenes/icon-oficina.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
+                                        <div class="img-oficina-sel img-selected imgs-3">
+                                            <img src="imagenes/icon-oficina-sel.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
                                     </div>
-
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input otrosLugares" name="ckOtros" type="checkbox"
-                                            id="otros5" value="cuarto de lavado" />
+                                        <input class="form-check-input otrosLugares ol-lavado" data-chk="lavado"
+                                            name="ckOtros" type="checkbox" id="otros5" value="cuarto de lavado" />
                                         <label class="form-check-label" for="otros5">
                                             <p style="font-weight:200;">Cuarto de lavado</p>
                                         </label>
+                                        <div class="img-lavado img-unselected imgu-4">
+                                            <img src="imagenes/icon-lavado.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
+                                        <div class="img-lavado-sel img-selected imgs-4">
+                                            <img src="imagenes/icon-lavado-sel.png" width="120px"
+                                                style="padding-left: 20px; padding-right: 20px">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <div id="preliminarTotalEstilo">
@@ -313,7 +335,7 @@
     <script>
         Splitting();
     </script>
-    <script src="js/proyectoFinalE3.js"></script>
+    <script src="js/proyectoFinal.js"></script>
 
 </body>
 

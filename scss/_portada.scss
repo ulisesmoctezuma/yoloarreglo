@@ -127,23 +127,25 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
 // =========================
 /* INICIO - COTIZADOR */
 // =========================
-.habitacionesRow {
+.espaciosRow {
   color: $color5;
   padding-top: 16px !important;
   padding-bottom: 16px !important;
-  padding-right: 4px !important;
+  padding-right: 15px !important;
+  padding-left: 5px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   min-width: 130px;
 }
 
-.habitacionesTitulo {
+.espaciosTitulo {
   font-family: $fontfam1;
   font-weight: 400;
+  padding-right: 10px;
 }
 
-.selectoresHabitaciones {
+.selectoresEspacios {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -151,7 +153,7 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   height: 32px !important;
 }
 
-.menosHabitaciones {
+.menosEspacios {
   width: 32px !important;
   height: 32px !important;
   flex-grow: 0 !important;
@@ -184,7 +186,7 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   position: relative;
 }
 
-.masHabitaciones {
+.masEspacios {
   width: 32px !important;
   height: 32px !important;
   flex-grow: 0 !important;
@@ -217,6 +219,13 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   cursor: not-allowed !important;
   border-color: $color15 !important;
   color: $color15 !important;
+}
+
+.form-cotizar {
+  color: $color5 !important;
+  background-color: $color1 !important;
+  border: 2.2px solid $color3 !important;
+  border-radius: 2rem !important;
 }
 
 // =========================

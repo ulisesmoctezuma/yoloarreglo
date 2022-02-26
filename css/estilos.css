@@ -539,7 +539,7 @@ body {
   color: #241b97 !important;
   font-weight: 500;
   padding: 0.6rem 0.8rem;
-  border-radius: 0.3rem;
+  border-radius: 1.5rem;
   border: none;
   cursor: pointer;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -594,7 +594,7 @@ body {
   color: #ffffff !important;
   font-weight: 500;
   padding: 0.6rem 0.8rem;
-  border-radius: 0.3rem;
+  border-radius: 1.5rem;
   border: none;
   cursor: pointer;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -788,11 +788,12 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
 }
 
 /* INICIO - COTIZADOR */
-.habitacionesRow {
+.espaciosRow {
   color: #ffffff;
   padding-top: 16px !important;
   padding-bottom: 16px !important;
-  padding-right: 4px !important;
+  padding-right: 15px !important;
+  padding-left: 5px !important;
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
@@ -805,12 +806,13 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   min-width: 130px;
 }
 
-.habitacionesTitulo {
+.espaciosTitulo {
   font-family: Outfit;
   font-weight: 400;
+  padding-right: 10px;
 }
 
-.selectoresHabitaciones {
+.selectoresEspacios {
   display: -webkit-inline-box !important;
   display: -ms-inline-flexbox !important;
   display: inline-flex !important;
@@ -824,7 +826,7 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   height: 32px !important;
 }
 
-.menosHabitaciones {
+.menosEspacios {
   width: 32px !important;
   height: 32px !important;
   -webkit-box-flex: 0 !important;
@@ -867,7 +869,7 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   position: relative;
 }
 
-.masHabitaciones {
+.masEspacios {
   width: 32px !important;
   height: 32px !important;
   -webkit-box-flex: 0 !important;
@@ -910,6 +912,13 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
   cursor: not-allowed !important;
   border-color: #7a78b1 !important;
   color: #7a78b1 !important;
+}
+
+.form-cotizar {
+  color: #ffffff !important;
+  background-color: #241b97 !important;
+  border: 2.2px solid #f5d104 !important;
+  border-radius: 2rem !important;
 }
 
 /* INICIO - SECCIÓN 3 */
@@ -2030,6 +2039,10 @@ label {
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(28, 3, 250, 0.2);
+}
+
+.img-selected {
+  display: none;
 }
 
 #plt {
