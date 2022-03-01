@@ -804,6 +804,7 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
       -ms-flex-pack: justify !important;
           justify-content: space-between !important;
   min-width: 130px;
+  margin-right: 0px !important;
 }
 
 .espaciosTitulo {
@@ -917,7 +918,6 @@ https://preview.themeforest.net/item/clanora-cleaning-services-html5-template/fu
 .form-cotizar {
   color: #ffffff !important;
   background-color: #241b97 !important;
-  border: 2.2px solid #f5d104 !important;
   border-radius: 2rem !important;
 }
 

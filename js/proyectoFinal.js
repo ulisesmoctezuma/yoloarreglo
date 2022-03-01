@@ -3,12 +3,84 @@ $(document).ready(function () {
     const btnCotizar = document.getElementById('btnCotizadorYLA');
     const btnLimpiar = document.getElementById('btnLimpiarYLA');
 
-    // HTML OPCIONES PARA ELEGIR CIUDAD
+    $("#codigoPostalCotizar").blur(function () {
+        if ($("#codigoPostalCotizar").val().length == 5) {
+            console.log("el codigo postal tiene la longitud correcta");
+            $("#codigoPostalCotizar").removeClass('is-invalid');
+            let codigoPostal = $("#codigoPostalCotizar").val();
+            console.log(codigoPostal);
+            let url = `https://api.copomex.com/query/info_cp/${codigoPostal}?token=pruebas`;
+            $("#coloniaMXCotizar").empty()
 
-    const ubicaciones = ["Cancún", "Tulum", "Playa del Carmen", "Isla Mujeres", "Mérida", "Cozumel"];
-    let opcionUbicacion = '';
-    ubicaciones.forEach((ubicacion, index) => opcionUbicacion += `<option value='${index}'>${ubicacion}</option>`)
-    $(`<select id="ubicacionCotizar" class="form-control form-cotizar">${opcionUbicacion}</select>`).insertAfter('#labelUbicacion');
+            fetch(url)
+                .then(response => {
+                    if (response.status == 200) {
+                        return response.json();
+                    } else {
+                        throw "Error, no ha ingresado un código postal"
+                    }
+                })
+
+                .then(responseText => {
+                    const infoCodigoPostal = responseText;
+                    console.log('Este es el objeto de usuarios', infoCodigoPostal);
+                    infoIndividual = $(infoCodigoPostal).get(0);
+                    $("#ciudadMXCotizar").html(`<option value='${infoIndividual.response.ciudad}'>${infoIndividual.response.ciudad}</option>`)
+                    $("#coloniaMXCotizar").prop("disabled", false);
+
+                    for (let i = 0; i < infoCodigoPostal.length; i++) {
+                        $("#coloniaMXCotizar").append(`<option value='${infoCodigoPostal[i].response.asentamiento}'>${infoCodigoPostal[i].response.asentamiento}</option>`)
+                        console.log(`${i} asentamiento:${infoCodigoPostal[i].response.asentamiento}, estado:${infoCodigoPostal[i].response.pais}`)
+                    }
+                })
+
+                .catch(err => {
+                    console.log(err);
+                });
+
+        } else if ($("#codigoPostalCotizar").val().length < 5) {
+            $("#codigoPostalCotizar").addClass('is-invalid');
+            console.log("el codigo postal tiene la longitud incorrecta");
+        }
+    });
+
+
+
+
+
+    /*     $("#codigoPostalCotizar").on("mouseenter mouseleave", function (event) {
+            let codigoPostal = $("#codigoPostalCotizar").val();
+            console.log(codigoPostal);
+            let url = `https://api.copomex.com/query/info_cp/${codigoPostal}?token=pruebas`;
+            $("#coloniaMXCotizar").empty()
+
+            fetch(url)
+                .then(response => {
+                    if (response.status == 200) {
+                        return response.json();
+                    } else {
+                        throw "Error, no ha ingresado un código postal"
+                    }
+                })
+
+                .then(responseText => {
+                    const infoCodigoPostal = responseText;
+                    console.log('Este es el objeto de usuarios', infoCodigoPostal);
+                    infoIndividual = $(infoCodigoPostal).get(0);
+                    $("#ciudadMXCotizar").html(`<option value='${infoIndividual.response.ciudad}'>${infoIndividual.response.ciudad}</option>`)
+                    $("#coloniaMXCotizar").prop("disabled", false);
+
+                    for (let i = 0; i < infoCodigoPostal.length; i++) {
+                        $("#coloniaMXCotizar").append(`<option value='${infoCodigoPostal[i].response.asentamiento}'>${infoCodigoPostal[i].response.asentamiento}</option>`)
+                        console.log(`${i} asentamiento:${infoCodigoPostal[i].response.asentamiento}, estado:${infoCodigoPostal[i].response.pais}`)
+                    }
+                })
+
+                .catch(err => {
+                    console.log(err);
+                });
+
+        }); */
 
     // HTML OPCIONES PARA ELEGIR TIPO DE HOGAR
 
@@ -46,7 +118,7 @@ $(document).ready(function () {
                     </svg>
                 </span>
             </button>
-            <div class="conteo${htmlEspacio.clase}">0</div>
+            <div class="conteo${htmlEspacio.clase} conteoEspacios">0</div>
             <button class="masEspacios" data-btn="${htmlEspacio.clase}" type="button">
                 <span class="ma${htmlEspacio.clase}Span">
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
@@ -75,8 +147,8 @@ $(document).ready(function () {
 
     function activarCotizador() {
         class Hogar {
-            constructor(nombre, tipo, habitaciones, banos, otrosEspaciosLimpiar, habitantes, mascotas, frequenciaLimpieza) {
-                this.nombre = nombre;
+            constructor(codigoPostal, tipo, habitaciones, banos, otrosEspaciosLimpiar, habitantes, mascotas, frequenciaLimpieza) {
+                this.codigoPostal = codigoPostal;
                 this.tipo = tipo;
                 this.habitaciones = habitaciones;
                 this.banos = banos;
@@ -197,18 +269,17 @@ $(document).ready(function () {
                 $("#convertirA").text(`${convertirA}`);
             }
 
-
         }
 
         // Variables del formulario
 
-        let nombre = document.getElementById("nombreCotizar").value;
-        let nombreJSON = JSON.stringify(nombre);
-        sessionStorage.setItem("nombre", nombreJSON);
+        let codigoPostal = document.getElementById("codigoPostalCotizar").value;
+        let codigoPostJSON = JSON.stringify(codigoPostal);
+        sessionStorage.setItem("codigoPostal", codigoPostJSON);
 
-        let ubicacion = document.getElementById("ubicacionCotizar").value;
-        let ubicacionJSON = JSON.stringify(ubicacion);
-        sessionStorage.setItem("ubicacion", ubicacionJSON);
+        let ciudadMexico = document.getElementById("ciudadMXCotizar").value;
+        let ciudadMexicoJSON = JSON.stringify(ciudadMexico);
+        sessionStorage.setItem("ciudad", ciudadMexicoJSON);
 
         let tipo = document.getElementById("tipoHogarCotizar").value;
         let tipoJSON = JSON.stringify(tipo);
@@ -297,24 +368,28 @@ $(document).ready(function () {
         console.log(arrayEspaciosLimp);
 
         const otrosEspaciosLimpiar = otrosEspaciosLimp.join(", "); // Devuelve array con espacio para que se muestre claramente en el promt
-        const hogar = new Hogar(nombre, tipo, habitaciones, banos, otrosEspaciosLimpiar, habitantes, mascotas, frequenciaLimpieza);
+        const hogar = new Hogar(codigoPostal, tipo, habitaciones, banos, otrosEspaciosLimpiar, habitantes, mascotas, frequenciaLimpieza);
         hogar.cotizarLimpieza();
 
         function recuperarDatos() {
-            document.getElementById("nombreCotizar").value = JSON.parse(sessionStorage.getItem("nombre"));
-            document.getElementById("ubicacionCotizar").value = JSON.parse(sessionStorage.getItem("ubicacion"));
+            document.getElementById("codigoPostalCotizar").value = JSON.parse(sessionStorage.getItem("codigoPostal"));
+            document.getElementById("ciudadMXCotizar").value = JSON.parse(sessionStorage.getItem("ciudad"));
             document.getElementById("tipoHogarCotizar").value = JSON.parse(sessionStorage.getItem("tipo"));
             document.getElementById("frequenciaCotizar").value = JSON.parse(sessionStorage.getItem("frequenciaLimpieza"));
-            /* document.getElementById("habitacionesCotizar").value */
-            $(".conteohabitaciones").html(JSON.parse(sessionStorage.getItem("habitaciones")));
-            $(".conteobanos").html(JSON.parse(sessionStorage.getItem("banos")));
-            $(".conteohabitantes").html(JSON.parse(sessionStorage.getItem("habitantes")));
-            $(".conteomascotas").html(JSON.parse(sessionStorage.getItem("mascotas")));
+
+            const tiposDeEspacios = ["habitaciones", "banos", "habitantes", "mascotas", ];
+            for (let i = 0; i < tiposDeEspacios.length; i++) {
+                if (JSON.parse(sessionStorage.getItem(`${tiposDeEspacios[i]}`)) >= 1) {
+                    $(`.${tiposDeEspacios[i]}Click`).removeClass('desactivarBtn');
+                    $(`.conteo${tiposDeEspacios[i]}`).html(JSON.parse(sessionStorage.getItem(`${tiposDeEspacios[i]}`)));
+                } else {
+                    $(`.conteo${tiposDeEspacios[i]}`).html(JSON.parse(sessionStorage.getItem(`${tiposDeEspacios[i]}`)));
+                };
+            }
+
             $(".otrosLugares").each(function (index) {
                 $(this).prop("checked", JSON.parse(sessionStorage.getItem("arrayOtrosEspaciosSS"))[index]);
-            })
-            activarCotizador();
-
+            });
             $(".otrosLugares").each(function (i) {
                 if ($(this).is(':checked')) {
                     $(`.imgs-${i}`).show();
@@ -323,7 +398,9 @@ $(document).ready(function () {
                     $(`.imgs-${i}`).hide();
                     $(`.imgu-${i}`).show();
                 }
-            })
+            });
+
+            activarCotizador();
 
         }
 
@@ -338,8 +415,10 @@ $(document).ready(function () {
         $("#contenedorTtlPreliminar").fadeOut("slow", function () {
             $("#plt").empty();
         });
-        $(".img-selected").hide()
-        $(".img-unselected").show()
+        $(".img-selected").hide();
+        $(".img-unselected").show();
+        $(".conteoEspacios").text(0);
+        $(".menosEspacios").addClass('desactivarBtn');
     }
 
     $("#frequenciaCotizar, #habitacionesCotizar, #banosCotizar, #habitantesCotizar, #mascotasCotizar, #otros1, #otros2, #otros3, #otros4, #otros5, #toggleMXNtoUSD").change(function () {
@@ -359,95 +438,37 @@ $(document).ready(function () {
         }
     })
 
-
-    /*     $(".otrosLugares").on('click', function (event) {
-            let chkId = event.target.dataset.chk;
-            $(`.img-${chkId}-sel`).toggle();
-            $(`.img-${chkId}`).toggle();
-        })
-     */
-
-
-    // CAMBIO DE ICON AL SELECCIONAR
-    /*     $(".otrosLugares").forEach((img,index) => {
-            if ($('.otrosLugares').is(':checked')) {
-                $(`.img-${chkId}`).attr("src", `imagenes/icon-${chkId}-sel.png`).fadeIn(2000);
-                console.log(`it works ${chkId}`);
-            } else if ($('.otrosLugares').not(':checked')) {
-                $(`.img-${chkId}`).attr("src", `imagenes/icon-${chkId}.png`).fadeIn(2000);
-                console.log(`it workssss ${chkId}`);
-            }
-        }) */
-
-    /*     $(".otrosLugares").on('click', (event) => {
-            let chkId = event.target.dataset.chk;
-            if ($('.otrosLugares').prop("checked") === false) {
-                console.log(`it is not checked ${chkId}`);
-            } else if ($('.otrosLugares').prop("checked") === true) {
-                console.log(`it is checked ${chkId}`);
-            }
-        })
-     */
-
-    /*     $('.otrosLugares').change((event) => {
-            let chkId = event.currentTarget.dataset.chk;
-            if ($('.otrosLugares').prop("checked") == true) {
-                $(`.img-${chkId}`).attr("src", `imagenes/icon-${chkId}-sel.png`).fadeIn(2000);
-                console.log(`it is checked ${chkId}`);
-            } else if ($('.otrosLugares').prop("checked") == false) {
-                $(`.img-${chkId}`).attr("src", `imagenes/icon-${chkId}.png`).fadeIn(2000);
-                console.log(`it is not checked ${chkId}`);
-            }
-        }) */
-    /* 
-        $(".otrosLugares").each(function () {
-            arrayOtrosEspaciosSS.push($(this).prop("checked"));
-        }); */
-
-
-
-    /*     $('input:checkbox[name="ckOtros"]').on('click', function () {
-            if ($(this).is(':checked')) {
-                //$(this).prop('checked',false);
-                let chkId = event.currentTarget.dataset.chk;
-                console.log("its cheked");
-            } else {
-                //$(this).prop('checked',true);
-                console.log("it works, it is not checked");
-            }
-        }) */
-
-
-
-
-    // BOTON TIPO AIRBNB
+    // BOTON TIPO REDONDO MAS Y MENOS
 
     $(".menosEspacios").on('click', (event) => {
         let btnId = event.currentTarget.dataset.btn;
-        console.log(btnId);
-        if (parseInt($(`.${btnId}Click`).next().text()) == 0) {
+        if (parseInt($(`.${btnId}Click`).next().text()) == 1) {
+            $(`.conteo${btnId}`).text(parseInt($(`.conteo${btnId}`).text()) - 1);
             $(`.${btnId}Click`).addClass('desactivarBtn');
+            activarCotizador();
+        } else if (parseInt($(`.${btnId}Click`).next().text()) >= 2) {
+            $(`.conteo${btnId}`).text(parseInt($(`.conteo${btnId}`).text()) - 1);
+            activarCotizador();
         }
     })
 
     $(".masEspacios").on('click', (event) => {
         let btnId = event.currentTarget.dataset.btn;
-        if (parseInt($(`.${btnId}Click`).next().text()) >= 1) {
+        if (parseInt($(`.${btnId}Click`).next().text()) == 0) {
+            $(`.conteo${btnId}`).text(parseInt($(`.conteo${btnId}`).text()) + 1);
             $(`.${btnId}Click`).removeClass('desactivarBtn');
+            activarCotizador();
+        } else if (parseInt($(`.${btnId}Click`).next().text()) >= 1) {
+            $(`.conteo${btnId}`).text(parseInt($(`.conteo${btnId}`).text()) + 1);
+            activarCotizador();
         }
     })
 
-    /*     $('.masHabitaciones').on('click', () => {
-            if (parseInt($('.chSpan').text()) < 15) {
-                $(".chSpan").text(parseInt($('.chSpan').text()) + 1);
+    /*     $('.menosHabitaciones').on('click', () => {
+            if (parseInt($('.chSpan').text()) >= 1) {
+                $(".chSpan").text(parseInt($('.chSpan').text()) - 1);
             }
         }) */
-
-    $('.menosHabitaciones').on('click', () => {
-        if (parseInt($('.chSpan').text()) >= 1) {
-            $(".chSpan").text(parseInt($('.chSpan').text()) - 1);
-        }
-    })
 
     if (parseFloat($('.chSpan').text()) == 0) {
         $('.menosHabitaciones').toggleClass('desactivarBtn');
